@@ -1,8 +1,11 @@
 * {
-    font-family: 'Kanit', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Slab', serif;
 }
 
-body {
+#index-body {
+    /* Background of the entire index page is set to white*/
     background-color: white;
 }
 
@@ -13,50 +16,133 @@ header {
 }
 
 nav {
-    padding: 2% 6%;
+    /* Navigation Bar */
+    width: 90%;
+    margin: auto;
+    padding: 35px 0;
+    /* 
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    */
 }
 
 nav img {
-    width: 150px;
+    /* Logo width */
+    width: 120px;
+    cursor: pointer;
 }
 
-nav ul li {
+#nav-ul li {
+    /* */
     list-style: none;
-    display: inline-block;
-    padding: 8px 12px;
+    margin: 0 20px;
 }
 
-nav ul li a {
+/* 
+#nav-ul li {
+    list-style: none;
+    margin: 0 20px;
+    display: inline-block;
+    position: relative;
+}
+*/
+
+#nav-ul li a {
+    /* */
     color: black;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 20px;
 }
 
-nav ul li::after {
+#nav-ul li a:hover {
+    /* Navigation items turn to red and get bigger when the mouse hovers over them */
+    color: red;
+    font-size: 1.1em;
+}
+
+/* Creates a colored bar under navigation items 
+#nav-ul li::after {
     content: '';
-    width: 0%; /* In order to stay hidden */
+    width: 0%;  In order to stay hidden 
     height: 2px;
     background: black;
-    display: block;
     margin: auto;
-    transition: 0.2s;
+    transition: 0.2s;  It takes 0.2s to transition from nothing to nav item with underlined bar 
+    position: absolute; 
+    left: 0;
+    bottom: -10px;
+}
+*/ 
+ 
+/* Changes the width of the colored bar to 100% after the mouse hovers over a navigation item 
+#nav-ul li:hover::after {
+    width: 100%; 
+}
+*/
+
+#index-title {
+    margin: 30px 10px;
+    width: 100%;
+    color: black;
+    font-size: 2em;
+    font-family: 'Roboto Slab', serif;
 }
 
-nav ul li:hover::after {
-    width: 100%; /* After the mouse hovers over the nav items */
+main {
+    margin: 30px 30px;
+    width: 100%;
 }
 
-main p {
+#index-text {
+    margin: 30px 10px;
+    width: 100%;
     color: black;
     font-size: 1.5em;
+    font-weight: 300;
+}
+
+a:link {
+    color: red;
+    text-decoration: none;
+}
+
+a:visited {
+    color: gray;
+    text-decoration: none;
+}
+
+a:hover {
+    color: lightpink;
+    text-decoration: none;
+    font-size: 1.2em; /* Zoom in */
+}
+
+a:active {
+    color: blue;
+    text-decoration: none;
 }
 
 #button-start-shopping {
-    width: 150px;
-    height: 50px;
-    text-align: center;
+    /* Black button with white text aligned to the center of the box */
+    width: 175px;
+    height: 85px;
     background-color: black;
     color: white;
     margin: 5px;
+    cursor: pointer;
+    border-radius: 25px; /* Rounding the corners.. */
+    font-size: medium;
 }
+
+footer {
+    /* top: 50px, left&right: 10px, bot: 10px */
+    margin: 50px 10px 10px;
+    width: 100%;
+}
+
+#container {
+    padding: auto;
+    margin: auto;
+}
+
