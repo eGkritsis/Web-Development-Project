@@ -21,19 +21,21 @@
         <header>
             <nav>
                 <h1><a href="#"><img src="./img/logo-modified.png" alt="logo" width="100"></a></h1>
-                <ul class="nav-ul">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="product-categories.html">Products</a></li>
-                    <li><a href="about-us.html">About</a></li>
-                    <li><a href="contact-us.html">Contact</a></li>
+                <ul class="nav-ul"> <!-- Na suzhtithei to ean einai swsth praktikh auth, isws thelei diaforetiko id giati ginetai mia fora, alla ousiastika tha meinei idio to menu ara kai id na bazame tha ksanagrafame idio kwdika css ara dn exei nohma. Na to doume-->
+                    <li><a href="#presentation">Preview</a></li>
+                        <li><a href="#description">Description</a></li>
+                        <li><a href="#manufacturer">Manufacturer</a></li>
+                        <li><a href="#specs">Technical Specifications</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
                 </ul>
             </nav>
         </header>
         
         <main>
+            <!--
             <aside>
-                <nav>
-                    <ul>
+                <nav id="sidebar-nav">
+                    <ul id="sidebar-ul">
                         <li><a href="#presentation">Preview</a></li>
                         <li><a href="#description">Description</a></li>
                         <li><a href="#manufacturer">Manufacturer</a></li>
@@ -42,19 +44,20 @@
                     </ul>
                 </nav>
             </aside>
+            -->
 
             <a href="./products-cameras.html">
-                <button>Back</button>
+                <button id="back-btn">Back</button>
             </a>
 
-            <section id="nikon-camera-full">
+            <section id="container_nikon_camera">
 
                 <section id="presentation">
                     <h2>Nikon Mirrorless Camera Z Fc Crop Frame Body Silver</h2>
                     <h5>Product id</h5>
-                    <img src="./img/cameras_2.jpg" alt="cameras-product2" width="300">
+                    <img src="./img/cameras_2-modified.png" alt="cameras-product2" width="300">
                     <h6>959,00 €</h6>
-                    <ul>
+                    <ul id="rev-ul">
                         <li>★</i></li>
                         <li>★</i></li>
                         <li>★</i></li>
@@ -64,61 +67,62 @@
                     </ul>
                     <p>
                         <ul>
-                            <li>General Features:</li>
+                            <p>General Features:</p>
                             <li>Sensor Format: APS(C)</li>
                             <li>Viewfinder</li>
                             <li>Max Resolution: 20.9 Mpx</li>
                             <li>Video Resolution 4K</li>
                         </ul>
-                        <a href="#description">Full description</a>
                     </p>
                 </section>
 
                 <section id="description">
                     <article>
-                        <h3>Description</h3>
+                        <h3 class="section-title-nikon">Description</h3>
                         <p>
                             The Z fc is where classic Nikon camera design meets the innovative technology of the Z series, ensuring unparalleled image quality combined with pure, authentic design. I excels in any shooting environment, whatever your need may be: from getting that perfect night shot, to capturing the perfect video for a vlog. Lead your creativity to the new era with this lightweight DX-format mirrorless camera, bringing iconic style to your hands.
-                            <br>
-                            <h4>Iconic Design - it's in its DNA.</h4>
+                        </p>
+                        <br>
+                        <h4>Design - it's in its DNA.</h4>
+                        <p>
                             Black body with embossed texture. A metal frame with discreet feel. The Z fc derives its style from the classic icons that where the Nikon SLR film cameras, with its special edition NIKKOR Z lens embodying that design philosophy. Every aspect of the camera encompasses design ques to the pass. And the creative power of the present.
                         </p>
-                        <img src="./img/nikon_1.jpg" alt="nikon1" width="1000">
+                        <img src="./img/nikon_1.jpg" alt="nikon1" width="1000" id="1st-nikon">
+                        <h4>Physical options control</h4>
                         <p>
-                            <h4>Physical options control</h4>
                             Distinct physical selectors to control shutter speed, exposure and ISO sensitivity, all without the need to access the camera's menu. 
                         </p>
-                        <img src="./img/nikon_2.jpg" alt="nikon2" width="350">
+                        <img src="./img/nikon_2.jpg" alt="nikon2" width="350" id="2nd-nikon">
+                        <h4>Upper information display</h4>
                         <p>
-                            <h4>Upper information display</h4>
                             Need to capture portraits with a shallow depth of field or urban scenes from wide angles, while maintaining clarity throughout the frame? The small display enables you to confirm correct aperture selection at a glance by displaying the f/stop value on each capture.
                         </p>
-                        <img src="./img/nikon_3.jpg" alt="nikon3" width="350">
+                        <img src="./img/nikon_3-modified.png" alt="nikon3" width="350" id="3rd-nikon">
+                        <h4>Round electronic viewfinder</h4>
                         <p>
-                            <h4>Round electronic viewfinder</h4>
                             The Z fc has a high-resolution electronic viewfinder which is shaped round, drawing inspiration from the optical viewfinder of the Nikon FM2. It allows clear viewing during operation, and is automatically activated when you bring the camera near your eye.
                         </p>
-                        <img src="./img/nikon_4.jpg" alt="nikon4" width="350">
+                        <img src="./img/nikon_4-modified.png" alt="nikon4" width="350" id="4th-nikon">
+                        <h4>Made for the present</h4>
                         <p>
-                            <h4>Made for the present</h4>
                             The Z fc looks like it was designed in the '80s, however its sturdy frame made of magnesium alloy guarantees a camera that can stand up to today's demands. Robust in every way, the camera's main body is also lightweight and incredibly portable. Carry this camera around on your shoulder without worries, and be prepared to not fly under the radar.
                         </p>
-                        <img src="./img/nikon_5.jpg" alt="nikon5" width="1000">
+                        <img src="./img/nikon_5.jpg" alt="nikon5" width="1000" id="5th-nikon">
+                        <h4>Quality you can feel</h4>
                         <p>
-                            <h4>Quality you can feel</h4>
                             The Z fc's frame is constructed from high-grade magnesium alloy, the same material used in all Nikon's professional range cameras. High in strength and low in weight, it is a camera you can worrylessly take with you wherever you inspiration leads you.
                         </p>
-                        <img src="./img/nikon_6.jpg" alt="nikon6" width="350">
+                        <img src="./img/nikon_6.jpg" alt="nikon6" width="350" id="6th-nikon">
                     </article>
                 </section>
 
                 <section id="manufacturer">
-                    <h4>Manufacturer</h4>
+                    <h3 class="section-title-nikon">Manufacturer</h3>
                     <a href="https://www.nikonusa.com/en/index.page">Nikon</a>
                 </section>
 
                 <section id="specs">
-                    <h3>Technical Specifications</h3>
+                    <h3 class="section-title-nikon">Technical Specifications</h3>
                     <article id="general">
                         <h4>General</h4>
                         <table>
@@ -253,7 +257,7 @@
                 </section>
 
                 <section id="reviews">
-                    <h3>Reviews</h3>
+                    <h3 class="section-title-nikon">Reviews</h3>
                     <article>
                     </article>
                 </section>

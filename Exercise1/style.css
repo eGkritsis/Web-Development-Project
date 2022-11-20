@@ -5,6 +5,7 @@
 }
 
 body {
+    font-size: 100%;
     background-color: white;
     background-image: url('./img/background_gray.png');
     background-repeat: no-repeat; /* Image does not repeat itself */
@@ -59,14 +60,14 @@ nav img {
 }
 */
 
-.nav-ul li a {
+.nav-ul li > a {
     /* Navigation links */
     color: black;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 1em;
 }
 
-.nav-ul li a:hover {
+.nav-ul a:hover {
     /* Navigation items turn to red and get bigger when the mouse hovers over them */
     color: red;
     font-size: 1.1em;
@@ -96,7 +97,7 @@ nav img {
     margin: 30px 10px;
     width: 100%;
     color: black;
-    font-size: 2em;
+    font-size: 3em;
 }
 
 main {
@@ -109,7 +110,7 @@ main {
     width: 100%;
     color: black;
     font-size: 1.5em;
-    font-weight: 250;
+    font-weight: 350;
 }
 
 a:link {
@@ -125,7 +126,7 @@ a:visited {
 a:hover {
     color: purple;
     text-decoration: none;
-    font-size: 1.2em; /* Zooms in */
+    font-size: 1.1em; /* Zooms in */
 }
 
 a:active {
@@ -142,7 +143,7 @@ a:active {
     margin: 5px;
     cursor: pointer;
     border-radius: 300px; /* Rounding the corners.. */
-    font-size: medium;
+    font-size: 1.2em;
 }
 
 footer {
@@ -167,7 +168,7 @@ footer {
     color: black;
 }
 
-.category ul li {
+.category li {
     list-style: none;
 }
 
@@ -180,7 +181,7 @@ footer {
     display: none;
 }
 
-.category ul li:hover .subcategory {
+.category li:hover .subcategory {
     /* Subcategories pop */
     display: block;
     margin-left: 15px;
@@ -192,7 +193,7 @@ footer {
 }
 
 .category-title {
-    font-size: 40px;
+    font-size: 3em;
     margin-left: 15px;
     padding: 10px;
 }
@@ -227,7 +228,7 @@ footer {
     padding-left: 10px;
 }
 
-.product ul li {
+.product li {
     display: inline-block;
 }
 
@@ -240,4 +241,175 @@ footer {
     border-radius: 25px;
     border: 2px solid lightgray;
     color: black;
+}
+
+/*
+aside {
+    width: 20%;
+    height: auto;
+}
+
+#sidebar-nav {
+    width: 90%;
+    margin: auto;
+}
+
+#sidebar-ul li {
+    list-style: none;
+    margin: 0px 20px;
+}
+
+#sidebar-ul li > a {
+    /* Navigation links 
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+#sidebar-ul a:hover {
+    /* Navigation items turn to red and get bigger when the mouse hovers over them 
+    color: red;
+    font-size: 1.1em;
+}
+
+*/ 
+
+#back-btn {
+    /* Black "back" button on "product-nikon-camera.html */
+    width: 85px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    margin: 35px;
+    cursor: pointer;
+    border-radius: 200px; /* Rounding the corners.. */
+    font-size: 1.2em;
+}
+
+#container_nikon_camera {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#presentation {
+    margin: 30px 30px;
+    padding: 10px 10px;
+}
+
+#presentation h2 {
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 2.5em;
+}
+
+#presentation h5 {
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 1.5em;
+}
+
+#presentation h6 {
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-left: 10px;
+    font-size: 2.2em;
+}
+
+#presentation img {
+    margin-top: 50px;
+    margin-right: 50px;
+    width: 350px;
+    float: left;
+}
+
+#presentation ul {
+    padding-top: 10px;
+    padding-left: 10px;
+    margin: 10px;
+    font-size: 1.3em;
+}
+
+#rev-ul {
+    /* Modifies the "stars" list (reviews) */
+    list-style: none;
+}
+
+#rev-ul li {
+    display: inline-block;
+    font-size: 1.7em;
+}
+
+#rev-ul a {
+    font-size: 0.7em;
+}
+
+#description {
+    margin-top: 50px;
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    padding: 10px 10px;
+}
+
+.section-title-nikon {
+    /* Changes the font size of the sections titles */
+    font-size: 2em;
+    margin-top: 20px;
+    margin-bottom:  20px;
+}
+
+#description article > p {
+    width: 60%;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+#description h4 {
+    font-size: 1.3em;
+    margin-top: 30px;
+}
+
+/* TODO: #1st-nikon ..... #6th-icon doesnt work for some reason */
+
+#manufacturer {
+    margin-top: 50px;
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    padding: 10px 10px;
+}
+
+#manufacturer a {
+    /* Nikon link */
+    font-size: 1.2em;
+}
+
+#specs {
+    margin-top: 50px;
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    padding: 10px 10px;
+}
+
+#specs article {
+    margin-bottom: 20px;
+}
+
+#specs table td {
+    /* Leave some space between data on the same row */
+    padding: 8px 10px;
+}
+
+#specs table tr:nth-child(even) {
+   background-color: #f3f3f3;
+}
+
+#reviews {
+    margin-top: 50px;
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    padding: 10px 10px;
 }
