@@ -48,6 +48,8 @@ nav img {
 
 .nav-ul li {
     list-style: none;
+    /* When only 2 values are specified for margin, the first one is used for top & bottom, and the second one is
+     for left & right. This means that in this instance, top/bottom margins are 0px and left/right margins are 20px.*/
     margin: 0px 20px;
 }
 
@@ -113,6 +115,7 @@ main {
     font-weight: 350;
 }
 
+/* Colors for link interactions.*/
 a:link {
     color: red;
     text-decoration: none;
@@ -158,7 +161,7 @@ footer {
 }
 
 .category {
-    /* Create a border for every category and paint it white */
+    /* Create a box area for every category and paint it white */
     margin: 30px 30px;
     padding: 10px 10px;
     width: 30%;
@@ -194,7 +197,7 @@ footer {
 
 .category-title {
     font-size: 3em;
-    margin-left: 15px;
+    margin-left: 25px;
     padding: 10px;
 }
 
@@ -233,7 +236,7 @@ footer {
 }
 
 .product {
-    /* Create a border for every category and paint it white */
+    /* Create a box area for every category and paint it white */
     margin: 30px 30px;
     padding: 10px 10px;
     width: 30%;
@@ -413,3 +416,83 @@ aside {
     margin-bottom: 30px;
     padding: 10px 10px;
 }
+
+#reviews article{
+    margin-bottom: 25px;
+    background-color: #f3f3f3;
+}
+
+
+/* Code for about page*/
+#about-title {
+    margin-left: 40px;
+}
+
+#about-statement {
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 30px;
+    font-size: 1.2em;
+}
+
+#about-people {
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 60px;
+}
+
+.founder {
+    margin-top: 25px;
+    margin-bottom: 30px;
+    padding: 10px 10px;
+    background-color: #f3f3f3;
+    border: lightgrey solid 2px;
+    border-radius: 25px;
+}
+
+.founder p {
+    font-size: 1.1em;
+}
+
+/* Code for contact page*/
+
+/* Contact Page Title (reads "Contact Us")*/
+#contact-form-title {
+    /* Everything gets a 30px margin, except the bottom margin, that gets just 10px*/
+    margin: 30px 30px 10px;
+}
+
+/* Before the contact form area*/
+#contact-form-message {
+    margin: 0px 30px 20px;
+    font-size: 1.2em;
+}
+
+/* Contact form cell*/
+#contact-form {
+    margin: 10px 30px 20px;
+    padding: 15px 10px;
+    font-size: 1.1em;
+}
+
+/* Submit button on the contact form*/
+#submit-button {
+    margin-left: 30px;
+    margin-bottom: 40px;
+    background-color: black;
+    padding: 10px 20px;
+    color: #f3f3f3;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 1.1em;
+}
+
+/*  TODO: 
+    1)  Figure out how to make the submit button on the contact form more interactive.
+    2)  Write the CSS for the contact form
+    3)  Maybe the HTML of the contact form needs refactoring
+*/
+
+
