@@ -472,21 +472,37 @@ aside {
 
 /* Contact form cell*/
 #contact-form {
-    margin: 10px 30px 20px;
-    padding: 15px 10px;
+    background-color: white;
+    margin: 10px 15% 20px;
+    padding: 1em 1.05em;
     font-size: 1.1em;
+    border: lightgray solid 2px;
+    border-radius: 1.2em;
 }
+
+fieldset {
+    border: none;
+    margin: 1.1em 0px;
+}
+
+
+
+
+#purchase-details {}
 
 /* Submit button on the contact form*/
 #submit-button {
-    margin-left: 30px;
-    margin-bottom: 40px;
+    margin-top: 1.5em;
     background-color: black;
-    padding: 10px 20px;
+    padding: 0.55em 1.2em;
     color: #f3f3f3;
     cursor: pointer;
-    border-radius: 25px;
+    border-radius: 1.3em;
     font-size: 1.1em;
+}
+
+#submit-button:hover {
+    background-color: rgb(56, 56, 56);
 }
 
 /*  TODO: 

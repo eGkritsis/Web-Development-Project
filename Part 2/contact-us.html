@@ -34,58 +34,56 @@
             <p id="contact-form-message">
                 Have any questions? Feel free to contact us! Fill the form and we will 
                 get back to you soon.</p>
-            <form method="POST" action="/customer-contact">
-                <section id="contact-form">
-                    <h2>Contact Form:</h2>
-    
-                    <fieldset id="customer-details">
-                        <legend>Customer Details</legend>
-                            
-                                <label for="txt-first-name">First Name: </label>
-                                <input type="text" id="txt-first-name" name="first-name">
-                
-                                <label for="txt-surname">Surname: </label>
-                                <input type="text" id="txt-surname" name="surname">
-                            
-                                <label for="txt-email">E-mail: </label>
-                                <input type="text" id="txt-email" name="email">
-    
-                                <fieldset id="phone-details">
-                                    <legend>Phone</legend>
-    
-                                    <label for="tel-telephone">Number: </label>
-                                    <input type="tel" id="txt-telephone" name="telephone">
-                                    
-                                    <label for="opt_telephone">Type: </label>
-                                    <select name="phone-type" id="opt-telephone">
-                                        <option value="mobile">Mobile</option>
-                                        <option value="landline">Landline</option>
-                                    </select>
-    
-                                </fieldset>
-                    </fieldset>
-    
-                    <fieldset id="purchase-details">
-                        <legend>Purchase Details</legend>
-    
-                        <label for="txt-product-id">Product ID: </label>
-                        <input type="text" id="txt-product-id" name="product_id">
-    
-                        <label for="date-purchase-date">Purchase Date: </label>
-                        <input type="date" id="date-purchase-date" name="purchase-date">
-    
-                        <label for="file-receipt">Receipt: </label>
-                        <input type="file" id="file-receipt" name="receipt">
-                    </fieldset>
-    
-                    <p>
-                        <label for="text-description">Description: </label>
-                    </p>
-                    <textarea id="text-description" name="description" rows="6" cols="80"></textarea>
-                </section>
-                <input id="submit-button" type="submit" value="Submit">
-            </form>
-            
+            <section id="contact-form">    
+                <form method="POST" action="/customer-contact">
+                        <h2>Contact Form:</h2>
+
+                        <fieldset id="customer-details">
+                            <legend>Customer Details</legend>
+                                
+                                    <label for="txt-first-name">First Name: </label>
+                                    <input type="text" id="txt-first-name" name="first-name">
+                    
+                                    <label for="txt-surname">Surname: </label>
+                                    <input type="text" id="txt-surname" name="surname">
+                                
+                                    <label for="txt-email">E-mail: </label>
+                                    <input type="text" id="txt-email" name="email">
+        
+                                    <fieldset id="phone-details">
+                                        <legend>Phone</legend>
+        
+                                        <label for="tel-telephone">Number: </label>
+                                        <input type="tel" id="txt-telephone" name="telephone">
+                                        
+                                        <label for="opt_telephone">Type: </label>
+                                        <select name="phone-type" id="opt-telephone">
+                                            <option value="mobile">Mobile</option>
+                                            <option value="landline">Landline</option>
+                                        </select>
+        
+                                    </fieldset>
+                        </fieldset>
+        
+                        <fieldset id="purchase-details">
+                            <legend>Purchase Details</legend>
+        
+                            <label for="txt-product-id">Product ID: </label>
+                            <input type="text" id="txt-product-id" name="product_id">
+        
+                            <label for="date-purchase-date">Purchase Date: </label>
+                            <input type="date" id="date-purchase-date" name="purchase-date">
+        
+                            <label for="file-receipt">Receipt: </label>
+                            <input type="file" id="file-receipt" name="receipt">
+                        </fieldset>
+                        <p>
+                            <label for="text-description">Description: </label>
+                            <textarea id="text-description" name="description" rows="6" cols="80" placeholder="Describe your issue here."></textarea>
+                        </p>
+                    <input id="submit-button" type="submit" value="Submit">
+                </form>
+            </section>
             
         </main>
 
