@@ -5,6 +5,14 @@
 }
 
 body {
+    /* Grid layout code */
+    display: grid;
+    gap: 10em; /* Gap between grid items */ 
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer"; /* Create different string for the areas */
+
     font-size: 100%;
     background-color: white;
     background-image: url('./img/background_gray.png');
@@ -14,6 +22,14 @@ body {
 }
 
 #index-body {
+    /* Grid layout code */
+    display: grid;
+    gap: 10em;  /* Gap between grid items */
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer"; /* Create different string for the areas */
+
     background-color: white;
     background-image: url('./img/background.png');
     background-repeat: no-repeat; /* Image does not repeat itself */
@@ -22,8 +38,18 @@ body {
 }
 
 main {
+    grid-area: main;
     margin: 30px 30px;
     width: 100%;
+}
+
+
+.jstf-center {
+    /* Justify elements in the center of the screen with flexbox */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
 }
 
 #index-title {
@@ -42,16 +68,31 @@ main {
 }
 
 header {
+    grid-area: header;
     width: 100%;
     color: black;
     font-size: 1.5em;
+    
 }
 
 nav {
     /* Navigation Bar */
-    width: 90%;
-    margin: auto;
-    padding: 35px 0;
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+
+    /* Make the navigation bar sticky (temp: color + box) */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+    background: rgb(193, 191, 191);
+    
+    /* Has the highest z-index score so it floats above everything (default z-index score is 0) */
+    z-index: 1;
 }
 
 nav img {
@@ -61,31 +102,55 @@ nav img {
     cursor: pointer;
 }
 
-.nav-ul li {
+#company-name {
+    font-size: 1.5em;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.nav-links {
+    flex: 1;
+    text-align: right;
+}
+
+.nav-links ul {
+    overflow: hidden;
+    color: white;
+}
+
+.nav-links ul li {
     list-style: none;
-    /* When only 2 values are specified for margin, the first one is used for top & bottom, and the second one is
-     for left & right. This means that in this instance, top/bottom margins are 0px and left/right margins are 20px.*/
-    margin: 0px 20px;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
 }
 
 
-.nav-ul li > a {
+.nav-links ul li a {
     /* Navigation links */
     color: black;
     text-decoration: none;
     font-size: 1em;
 }
 
-.nav-ul a:hover {
-    /* Navigation items turn to red and get bigger when the mouse hovers over them */
-    color: red;
-    font-size: 1.1em;
+.nav-links ul li::after {
+    /* After hovering over the navigation links */
+    content: ''; 
+    width: 0%; /* 0% so the line remains hidden */
+    height: 2px;
+    background: #f44336;
+    display: block;
+    margin: auto;
+    transition: 0.4s; /* Transition time from no line to underlined link */
 }
 
+.nav-links ul li:hover::after {
+    /* After hovering, the red line appears */
+    width: 100%; 
+}
 
 /* Colors for link interactions.*/
 a:link {
-    color: red;
+    color: #f44336;
     text-decoration: none;
 }
 
@@ -117,6 +182,7 @@ a:active {
 }
 
 footer {
+    grid-area: footer;
     /* top: 50px, left&right: 10px, bot: 10px */
     margin: 50px 10px 10px;
     width: 100%;
@@ -127,17 +193,24 @@ footer {
 #container_categories {
     margin-top: 10px;
     margin-bottom: 10px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
 }
 
 .category {
     /* Create a box area for every category and paint it white */
     margin: 30px 30px;
     padding: 10px 10px;
-    width: 30%;
+    width: 25em;
     background-color: white;
     border-radius: 25px;
     border: 2px solid lightgray;
     color: black;
+
+    display: flex;
 }
 
 .category li {
@@ -164,6 +237,11 @@ footer {
 #container_products {
     margin-top: 10px;
     margin-bottom: 10px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
 }
 
 .category-title {
@@ -210,11 +288,14 @@ footer {
     /* Create a box area for every category and paint it white */
     margin: 30px 30px;
     padding: 10px 10px;
-    width: 30%;
+    width: 25em;
     background-color: white;
     border-radius: 25px;
     border: 2px solid lightgray;
     color: black;
+
+    display: inline-block;
+    /* BUG: DIFFERENT HEIGHTS ON FLEXBOX ITEMS */
 }
 
 /* Code for Product Nikon Camera*/
@@ -496,7 +577,7 @@ footer {
 /* Turns the border purple when typing on an input box*/
 #contact-form input:focus, textarea:focus{
     outline: none;
-    border: 3px solid purple;
+    border: 3px solid #f44336;
 }
 
 #contact-form #phone-details {
