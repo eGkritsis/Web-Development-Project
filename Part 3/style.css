@@ -194,15 +194,27 @@ footer {
     margin-top: 10px;
     margin-bottom: 10px;
 
+    /*Place the categories in a 3-column grid layout*/
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    justify-content: space-evenly;
+    align-content: center;
+    
+
+    /*
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
+    */
+    
 }
 
 .category {
     /* Create a box area for every category and paint it white */
-    margin: 30px 30px;
+    /*Deleted left-right margins*/
+    margin-top: 30px ;
+    margin-bottom: 30px;
     padding: 10px 10px;
     width: 25em;
     background-color: white;
@@ -234,14 +246,23 @@ footer {
 
 /* Code for Product Pages (Software, Cameras) */
 
-#container_products {
+.container_products {
     margin-top: 10px;
     margin-bottom: 10px;
 
+    /* 3-column grid layout for the products*/
+
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    justify-content: space-evenly;
+    align-content: center;
+    /*
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
+    */
+    
 }
 
 .category-title {
@@ -286,7 +307,9 @@ footer {
 
 .product {
     /* Create a box area for every category and paint it white */
-    margin: 30px 30px;
+    /* margin: 30px 30px;*/
+    margin-top: 30px;
+    margin-bottom: 30px;
     padding: 10px 10px;
     width: 25em;
     background-color: white;
@@ -396,6 +419,7 @@ footer {
     margin-bottom: 3em;
     font-size: 1.1em;
     overflow: auto;
+    display: flexbox;
 }
 
 #description article > p {
@@ -532,24 +556,24 @@ footer {
 
 /* Contact Page Title (reads "Contact Us")*/
 #contact-form-title {
-    /* Everything gets a 30px margin, except the bottom margin, that gets just 10px*/
-    margin: 1em 1.5em 0em;
+    /* Margins for left and right are no longer needed because of the grid layout's central alignment*/
+    margin-top: 1em;
 }
 
 /* Before the contact form area*/
 #contact-form-message {
-    margin: 0.5em 2.5em 2.5em;
+    margin-top: 0.5em;
+    margin-bottom: 2.5em;
     font-size: 1.2em;
 }
 
 /* Contact form cell*/
 #contact-form {
     background-color: white;
-    margin: 10px 15% 20px;
-    padding: 1em 1.05em;
+    padding: 1em 1.1em;
     font-size: 1.1em;
     border: lightgray solid 2px;
-    border-radius: 1.2em;
+    border-radius: 1.2em;    
 }
 
 /* Bigger gray letters for titles of sub-sections on the form*/
