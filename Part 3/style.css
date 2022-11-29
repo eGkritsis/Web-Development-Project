@@ -1,5 +1,5 @@
 * {
-    margin: 0;
+    margin: 0 auto; /* BUG WITH THE 0 AUTO; DOULEUEI TO NIKON CAMERA TO CENTER ME TO AUTO alla peirazontai ta koutia sta categories xwris logo */
     padding: 0;
     font-family: 'Roboto Slab', serif;
 }
@@ -39,10 +39,8 @@ body {
 
 main {
     grid-area: main;
-    margin: 30px 30px;
     width: 100%;
 }
-
 
 .jstf-center {
     /* Justify elements in the center of the screen with flexbox */
@@ -72,7 +70,6 @@ header {
     width: 100%;
     color: black;
     font-size: 1.5em;
-    
 }
 
 nav {
@@ -191,28 +188,15 @@ footer {
 /* Code for Categories Page */
 
 #container_categories {
-    margin-top: 10px;
-    margin-bottom: 10px;
-
     /*Place the categories in a 3-column grid layout*/
     display: grid;
     grid-template-columns: 30% 30% 30%;
     justify-content: space-evenly;
     align-content: center;
-    
-
-    /*
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    */
-    
 }
 
 .category {
     /* Create a box area for every category and paint it white */
-    /*Deleted left-right margins*/
     margin-top: 30px ;
     margin-bottom: 30px;
     padding: 10px 10px;
@@ -223,10 +207,17 @@ footer {
     color: black;
 
     display: flex;
+    flex-direction: row;
+    gap: 1.5em;
 }
 
 .category li {
     list-style: none;
+}
+
+.category h2 {
+    align-items: center; 
+    justify-content: space-evenly;
 }
 
 .category img {
@@ -238,11 +229,17 @@ footer {
     display: none;
 }
 
-.category li:hover .subcategory {
+.category:hover .subcategory {
     /* Subcategories pop */
-    display: block;
-    margin-left: 15px;
+    display: flex;
+    justify-content: space-between;
 } 
+
+.category:hover {
+    /* Change the border color of category box */
+    border-color: black;
+    transition: 1.2s;
+}
 
 /* Code for Product Pages (Software, Cameras) */
 
@@ -250,19 +247,11 @@ footer {
     margin-top: 10px;
     margin-bottom: 10px;
 
-    /* 3-column grid layout for the products*/
-
+    /* 3-column grid layout for the products */
     display: grid;
     grid-template-columns: 30% 30% 30%;
     justify-content: space-evenly;
     align-content: center;
-    /*
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    */
-    
 }
 
 .category-title {
@@ -317,14 +306,20 @@ footer {
     border: 2px solid lightgray;
     color: black;
 
-    display: inline-block;
-    /* BUG: DIFFERENT HEIGHTS ON FLEXBOX ITEMS */
+    display: flex;
+    flex-direction: column;
+}
+
+.product:hover {
+    border-color: black;
+    transition: 1.2s;
 }
 
 /* Code for Product Nikon Camera*/
 
 #back-btn {
     /* Black "back" button on "product-nikon-camera.html */
+    margin-left: 2em;
     padding: 20px 30px;
     background-color: black;
     color: white;
@@ -334,21 +329,41 @@ footer {
 }
 
 #container_nikon_camera {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 2em;
+
+    /* 5-row flex layout for different parts of the nikon page */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.jstf_nikon_article_text_img_horizontal {
+    /* 2-row flex layout for text and image in nikon description section */
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
+
+.jstf_nikon_article_text_img_vertical {
+    /* 2-column flex layout for text and image in nikon description section */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.flex_descr_text {
+    /* flex-layout for description paragraphs & titles in nikon description section */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 #container_nikon_camera img {
     border-radius: 1.2em;
 }
 
-#container_nikon_camera section {
-    margin-top: 2em;
-    margin-bottom: 2em;
-}
-
 #presentation {
-    margin-left: 2em;
+    margin-left: 0;
     padding: 10px 10px;
 }
 
@@ -401,25 +416,29 @@ footer {
 
 #description {
     padding: 10px 10px;
-    /* positioning to the center - 10% */ 
-    margin-right: 10%;
-    margin-left: 10%;
+    /* Flex layout for all segments in the description of nikon product */
+    display: flex;
+    flex-direction: column;
+    gap: 3.5em;
+
+    /* Position in the center 
+    align-items: center;
+    justify-content: center;
+    */
+    width: 70%;
 }
 
 .section-title-nikon {
     /* Changes the font size & margins of the sections titles */
+    margin-left: 0;
     font-size: 2em;
     margin-top: 1.1em;
     margin-bottom:  1.1em;
 }
 
-#description article {
-    /* overflow: auto; - If a floated element is taller than the containing element, it will "overflow" outside of its container. */ 
-    margin-top: 3em;
-    margin-bottom: 3em;
+#description article { 
     font-size: 1.1em;
-    overflow: auto;
-    display: flexbox;
+    display: flex;
 }
 
 #description article > p {
@@ -428,46 +447,12 @@ footer {
 
 #description h4 {
     font-size: 1.5em;
-    margin-bottom: 0.5em;
-}
-
-#first-img {
-    margin-top: 1.5em;
-    width: 100%;
-}
-
-#second-img {
-    float: right;
-    margin-left: 1em;
-}
-
-#third-img {
-    float: left;
-    margin-right: 1em;
-    
-}
-
-#fourth-img {
-    float: right;
-    margin-left: 1em;
-    
-}
-
-#fifth-img {
-    width: 100%;
-    margin-top: 2em;
-}
-
-#sixth-img {
-    float: right;
-    margin-left: 1em;   
+    margin-left: 0;
 }
 
 #manufacturer {
-    padding: 10px 10px;
-    /* positioning to the center - 10% */  
-    margin-right: 10%;
-    margin-left: 10%;
+    padding: 10px 10px; 
+    margin-left: 0;
 }
 
 #manufacturer a {
@@ -475,11 +460,9 @@ footer {
     font-size: 1.7em;
 }
 
-#specs {
-    /* positioning to the center - 10% */ 
-    margin-right: 10%;
-    margin-left: 10%;
+#specs { 
     padding: 10px 10px;
+    margin-left: 0;
 }
 
 #specs article {
@@ -506,10 +489,8 @@ footer {
 }
 
 #reviews {
-     /* positioning to the center - 10% */ 
-    margin-right: 10%;
-    margin-left: 10%;
     padding: 10px 10px;
+    margin-left: 0;
 }
 
 #reviews article{
@@ -520,6 +501,13 @@ footer {
 }
 
 /* Code for about page*/
+
+#flex_container_about_us {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
 #about-title {
     margin-left: 40px;
 }
@@ -537,6 +525,12 @@ footer {
     margin-left: 40px;
     margin-right: 40px;
     margin-bottom: 60px;
+
+    /* Maybe add flex layout
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    */
 }
 
 .founder {

@@ -153,11 +153,17 @@ footer {
     display: none;
 }
 
-.category li:hover .subcategory {
+.category:hover .subcategory {
     /* Subcategories pop */
     display: block;
     margin-left: 15px;
 } 
+
+.category:hover {
+    /* Change the border color of category box */
+    border-color: black;
+    transition: 1.2s;
+}
 
 /* Code for Product Pages (Software, Cameras) */
 
@@ -215,6 +221,11 @@ footer {
     border-radius: 25px;
     border: 2px solid lightgray;
     color: black;
+}
+
+.product:hover {
+    border-color: black;
+    transition: 1.2s;
 }
 
 /* Code for Product Nikon Camera*/
