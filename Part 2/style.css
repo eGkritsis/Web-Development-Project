@@ -97,7 +97,6 @@ a:visited {
 a:hover {
     color: purple;
     text-decoration: none;
-    font-size: 1.1em; /* Zooms in */
 }
 
 a:active {
