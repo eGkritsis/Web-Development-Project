@@ -31,7 +31,7 @@ body {
         "footer"; /* Create different string for the areas */
 
     background-color: white;
-    background-image: url('./img/background.png');
+    background-image: url('./img/background.png'); /*Different background for Index page*/
     background-repeat: no-repeat; /* Image does not repeat itself */
     background-size: cover; /* Image covers the entire element */
     background-attachment: fixed; /* The entire element is always covered */
