@@ -338,11 +338,22 @@ footer {
     gap: 1.5em;
 }
 
-.jstf_nikon_article_text_img_horizontal {
-    /* 2-row flex layout for text and image in nikon description section */
+.jstf_nikon_article_text_img_horizontal_right {
+    /* 2-row flex layout for text and image in nikon description section. The items as ordered at the html file are presented from right to left */
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 2em;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.jstf_nikon_article_text_img_horizontal_left {
+    /* 2-row flex layout for text and image in nikon description section. The items as ordered at the html file are presented from left to right*/
     display: flex;
     flex-direction: row;
     gap: 2em;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .jstf_nikon_article_text_img_vertical {
