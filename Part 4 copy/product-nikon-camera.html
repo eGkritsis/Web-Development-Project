@@ -18,7 +18,7 @@
 
     <body>
         <header>
-            <nav>
+            <nav id="nav_product_nikon"> <!--Added ID for the phone media query. Needs to be discussed-->
                 <h1><a href="index.html"><img src="./img/logo-modified.png" alt="logo" width="100"></a></h1>
                 <h1 id="company-name">Kubrik</h1>
                 <section class="nav-links">
@@ -87,10 +87,14 @@
                                 ques to the pass. And the creative power of the present.
                             </p>
                         </section>
-                        <img id="first-img" src="./img/nikon_1.jpg" alt="nikon1" width="1000">
+                        <img id="first-img" srcset="img/small_nikon_1.jpg 250w, img/nikon_1.jpg 1920w"
+                            sizes="(max-width: 400px) 100vw,
+                                   1000px"
+                            src="img/nikon_1.jpg"
+                            alt="nikon1">
                     </article>
 
-                    <article class="jstf_nikon_article_text_img_horizontal">
+                    <article class="jstf_nikon_article_text_img_horizontal_left">
                         <section class="flex_descr_text">
                             <h4>Physical options control</h4>
                             <p>
@@ -98,11 +102,14 @@
                                 need to access the camera's menu. 
                             </p>
                         </section>
-                        <img id="second-img" src="./img/nikon_2.jpg" alt="nikon2" width="350">
+                        <img id="second-img" srcset="img/small_nikon_2.png 250w, img/nikon_2.png 640w"
+                            sizes="(max-width: 400px) 100vw,
+                                   450px"
+                            src="img/nikon_2.png"
+                            alt="nikon2">
                     </article>
 
-                    <article class="jstf_nikon_article_text_img_horizontal">
-                        <img id="third-img" src="./img/nikon_3-modified.png" alt="nikon3" width="350">
+                    <article class="jstf_nikon_article_text_img_horizontal_right">
                         <section class="flex_descr_text">
                             <h4>Upper information display</h4>
                             <p>
@@ -111,10 +118,14 @@
                                 by displaying the f/stop value on each capture.
                             </p>
                         </section>
-                        
+                        <img id="third-img" srcset="img/small_nikon_3-modified.png 250w, img/nikon_3-modified.png 640w"
+                            sizes="(max-width: 400px) 100vw,
+                                    450px"
+                            src="img/nikon_3-modified.png"
+                            alt="nikon3">
                     </article>
 
-                    <article class="jstf_nikon_article_text_img_horizontal">
+                    <article class="jstf_nikon_article_text_img_horizontal_left">
                         <section class="flex_descr_text">
                             <h4>Round electronic viewfinder</h4>
                             <p>
@@ -123,7 +134,11 @@
                                 when you bring the camera near your eye.
                             </p>
                         </section>
-                        <img id="fourth-img" src="./img/nikon_4-modified.png" alt="nikon4" width="350">
+                        <img id="fourth-img" srcset="img/small_nikon_4-modified.png 250w, img/nikon_4-modified.png 640w"
+                            sizes="(max-width: 400px) 100vw,
+                                   450px"
+                            src="img/nikon_4-modified.png"
+                            alt="nikon4">
                     </article>
 
                     <article class="jstf_nikon_article_text_img_vertical">
@@ -136,11 +151,14 @@
                                 under the radar.
                             </p>
                         </section>
-                        <img id="fifth-img" src="./img/nikon_5.jpg" alt="nikon5" width="1000">
+                        <img id="fifth-img" srcset="img/small_nikon_5.jpg 250w, img/nikon_5.jpg 1920w"
+                            sizes="(max-width: 400px) 100vw,
+                                   1000px"
+                            src="img/nikon_5.jpg"
+                            alt="nikon1">
                     </article>
 
-                    <article class="jstf_nikon_article_text_img_horizontal">
-                        <img id="sixth-img" src="./img/nikon_6.jpg" alt="nikon6" width="350">
+                    <article class="jstf_nikon_article_text_img_horizontal_right">
                         <section class="flex_descr_text">
                             <h4>Quality you can feel</h4>
                             <p>
@@ -149,6 +167,11 @@
                                 leads you.
                             </p>
                         </section>
+                        <img id="sixth-img" srcset="img/small_nikon_6.png 250w, img/nikon_6.png 640w"
+                            sizes="(max-width: 400px) 100vw,
+                                   450px"
+                            src="img/nikon_6.png"
+                            alt="nikon6">
                     </article>
 
                 </section>
