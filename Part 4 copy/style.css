@@ -295,7 +295,6 @@ footer {
 
 .product {
     /* Create a box area for every category and paint it white */
-    /* margin: 30px 30px;*/
     margin-top: 30px;
     padding: 10px 10px;
     width: 25em;
@@ -459,32 +458,32 @@ footer {
     margin-left: 0;
 }
 
-#first-img { /* MQ1 */
+#first-img { 
     max-width: max-content;
     width: 100%;
 } 
 
-#second-img { /* MQ1 */
+#second-img { 
     max-width: max-content;
     width: 100%;
 } 
 
-#third-img { /* MQ1 */
+#third-img { 
     max-width: max-content;
     width: 100%;
 } 
 
-#fourth-img { /* MQ1 */
+#fourth-img { 
     max-width: max-content;
     width: 100%;
 } 
 
-#fifth-img { /* MQ1 */
+#fifth-img { 
     max-width: max-content;
     width: 100%;
 } 
 
-#sixth-img { /* MQ1 */
+#sixth-img { 
     max-width: max-content;
     width: 100%;
 }
@@ -670,11 +669,11 @@ fieldset {
     }
 
     #index-title {
-        font-size: 1.7em; /* MQ1 */
+        font-size: 1.7em; 
     }
 
     #index-text {
-        width: 90%; /* MQ1 */
+        width: 90%; 
     }
 
     header {
@@ -701,7 +700,7 @@ fieldset {
     }
 
     #company-name {
-        font-size: 1.3em;/* MQ1*/
+        font-size: 1.3em;
     }
 
     .nav-links {
@@ -745,7 +744,7 @@ fieldset {
 
     .container_products {
         grid-template-columns: auto;
-        gap: 1em; /* MQ1 */
+        gap: 1em; 
     }
 
     .category-title {
@@ -754,17 +753,16 @@ fieldset {
     }
 
     .product h6 {
-        /* MQ1 */
         padding-left: 10px;
         font-size: 1.2em;
     }
 
     .product {
-        width: 20em; /* MQ1 */
+        width: 20em;
     }
 
     #back-btn {
-        padding: 0.5rem 2rem;/*MQ1*/
+        padding: 0.5rem 2rem;
     }
 
     .jstf_nikon_article_text_img_horizontal_right {
@@ -816,14 +814,175 @@ fieldset {
 
     /*Resized the submit button for phone screens (made it a bit larger)*/
     #submit-button {
-        width: 50%; /* MQ1 */
+        width: 50%; 
     }
 
 }
 
 /* Medium devices (Tablets) */
 @media screen and (min-width: 501px) and (max-width: 900px) {
+    body {
+        grid-template-columns: auto;
+    }
 
+    #index-title {
+        font-size: 1.9em; 
+    }
+
+    #index-text {
+        width: 90%; 
+    }
+
+    header {
+        font-size: 1.4em;
+        margin-bottom: 1.1em;
+    }
+
+    /* Nav rearrangement to fit in the medium screen */
+    nav {
+        flex-direction: column;
+        padding: 2% 2%;
+
+        height: 10rem;
+    }
+
+    /* New thicker navbar for the nikon product page */
+    #nav_product_nikon {
+        height: 11rem;
+    }
+
+    nav img {
+        /* Logo width */
+        width: 80px;
+    }
+
+    #company-name {
+        font-size: 1.5em;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .nav-links ul li {
+        padding: 0rem 1.1rem;
+    }
+
+    .nav-links ul li a {
+        font-size: 0.8em;
+    }
+
+    footer {
+        margin: 1em;
+    }
+
+    #container_categories {
+        display: grid;
+        grid-template-columns: auto auto;
+
+        gap: 1em;
+    }
+
+    .category {
+        padding-left: 1.2em;
+        width: 22em;
+        gap: 2.5em;
+
+        margin-left: auto; 
+        margin-right: auto; 
+
+        width: 90%; 
+    }
+
+    .category img {
+        max-width: 100%;
+        width: 40%;
+    }
+
+    .subcategory {
+        /* The subcategories cannot be a drop-down menu in tablet-mode, since tablets don't support hover */
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .container_products {
+        grid-template-columns: auto auto;
+        gap: 1em; 
+    }
+
+    .category-title {
+        font-size: 2em;
+        margin-left: 1em;
+    }
+
+    .product h6 {
+        padding-left: 10px;
+        font-size: 1.2em;
+    }
+
+    .product {
+        margin-left: auto; 
+        margin-right: auto; 
+        max-width: max-content;
+        width: 90%; 
+    }
+
+    #back-btn {
+        padding: 0.5rem 2rem;
+    }
+
+    .jstf_nikon_article_text_img_horizontal_right {
+        /* Go from a horizontal to a vertical presentation*/
+        flex-direction: column;
+    }
+
+    .jstf_nikon_article_text_img_horizontal_left {
+        /* Go from a horizontal to a vertical presentation*/
+        flex-direction: column;
+    }
+
+    #about-statement {
+        margin-left: 2em;
+        margin-right: 2em;
+        font-size: 1.2em;
+    }
+
+    #about-people {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+       
+        margin-left: 2em;
+        margin-right: 2em;
+        width: auto;
+    }
+
+    .founder {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #contact-form-title {
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+
+    #contact-form-message {
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+
+    /* Added some margin so the form doesn't stick to the sides */
+    #contact-form {
+        margin-left: 0.8em;
+        margin-right: 0.8em;
+    }
+
+    /*Resized the submit button for medium screens (made it a bit larger) */
+    #submit-button {
+        width: 50%; 
+    }
 }
 
 /* Large devices (laptops/desktops) */
