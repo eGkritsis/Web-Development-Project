@@ -24,7 +24,7 @@ body {
 #index-body {
     /* Grid layout code */
     display: grid;
-    gap: 10em;  /* Gap between grid items */
+    gap: 15em;  /* Gap between grid items */
     grid-template-areas: 
         "header"
         "main"
@@ -35,12 +35,6 @@ body {
     background-repeat: no-repeat; /* Image does not repeat itself */
     background-size: cover; /* Image covers the entire element */
     background-attachment: fixed; /* The entire element is always covered */
-}
-
-#index-body footer {
-    /* Potitions the index footer at the bottom of the website */
-    bottom: 0;
-    position: static;
 }
 
 main {
@@ -188,8 +182,8 @@ footer {
     grid-area: footer;
     bottom: 0;
     width: 100%;
-    height: 2.5em;
     position: static;
+    margin-bottom: 1em;
 }
 
 /* Code for Categories Page */
