@@ -37,6 +37,12 @@ body {
     background-attachment: fixed; /* The entire element is always covered */
 }
 
+#index-body footer {
+    /* Potitions the index footer at the bottom of the website */
+    bottom: 0;
+    position: static;
+}
+
 main {
     grid-area: main;
     width: 100%;
