@@ -636,13 +636,19 @@ footer {
     width: 50%;
 }
 
-/* Delete the borders of the */
+/* 
+Delete the borders of fieldsets 
+==ALSO USED ON THE REGISTER FORM==
+*/
 fieldset {
     border: none;
     margin: 1.1em 0px;
 }
 
-/* Submit button on the contact form*/
+/*
+Submit button on the contact form 
+==ALSO USED ON THE REGISTER FORM==
+*/
 #submit-button {
     margin-top: 1;
     background-color: black;
@@ -659,11 +665,126 @@ fieldset {
     background-color: rgb(56, 56, 56);
 }
 
+/*Code for the Register Form page.*/
+
+/*Set the layout of the entire contact-form area*/
+#register-form-container{
+    background-color: white;
+    margin-left: 3em;
+    margin-right: 3em;
+    padding: 1em 1.1em;
+    font-size: 1.1em;
+    border: lightgray solid 2px;
+    border-radius: 1.2em;
+    display: grid;
+    grid-template-columns: auto
+
+}
+
+#register-form-container input:focus{
+    outline: none;
+    border: 3px solid #f44336;
+}
+
+/*Make the titles of every subfield a bit more pronounced*/
+#register-form-container legend{
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+#register-form-container details{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.user-input-box {
+    display: flex;
+    flex-direction: column;
+}
+.user-input-box input{
+    width: 18rem;
+    padding: 1em 1.2em;
+    margin: 1.1em 0;
+    box-sizing: border-box;
+    border-radius: 0.5em;
+}
+
+/*layout for the main info fieldset*/
+#user-main-info{
+    display: grid;
+    /*The grid's column template is dependent on the
+     screen size (see media queries)*/
+}
+
+#gender-input{
+    display: flex;
+    flex-direction: column;
+}
+
+#user-payment-info{
+    display: grid;
+    grid-template-columns: auto;
+}
+
+#payment-info-preference{
+    display: flex;
+    flex-direction: column;
+}
+
+#auth-details{
+    display: grid;
+    grid-template-columns: auto;
+}
+
+#password-container{
+    display: flex;
+    flex-direction: column;
+}
+
+#user-contact{
+    display: grid;
+    grid-template-columns: auto;
+}
+
+/*Specific details for select boxes in the register form.*/
+#register-form-container select{
+    width: 18rem;
+    padding: 1em 1.2em;
+    margin: 1.1em 0;
+    box-sizing: border-box;
+    border-radius: 0.5em;
+}
+
+/*arrangement of the Questions section*/
+#register-questions-container{
+    display: grid;
+    grid-template-columns: auto;
+}
+
+/*Internal arrangement of each question*/
+.register-question{
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/*Make the question titles stand out a bit*/
+.register-question p{
+    font-size: 1.05rem;
+    font-weight: bold;
+}
+
+/*How the error messages wil get displayed*/
+.error{
+    font-size: 0.8em;
+    color: #f44336;
+}
 
 /* Media queries for Responsive Design */
 
 /* Small devices (Smartphones) */
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 550px) {
     body {
         grid-template-columns: auto;
     }
@@ -817,10 +938,15 @@ fieldset {
         width: 50%; 
     }
 
+    /*The Register form for tablets and phones displays fields in only one column*/
+    #user-main-info{
+        grid-template-columns: auto;
+    }
+
 }
 
 /* Medium devices (Tablets) */
-@media screen and (min-width: 501px) and (max-width: 900px) {
+@media screen and (min-width: 551px) and (max-width: 900px) {
     body {
         grid-template-columns: auto;
     }
@@ -983,6 +1109,11 @@ fieldset {
     #submit-button {
         width: 50%; 
     }
+
+    /*The Register form for tablets and phones displays fields in only one column*/
+    #user-main-info{
+        grid-template-columns: auto;
+    }
 }
 
 /* Large devices (laptops/desktops) */
@@ -1019,5 +1150,10 @@ fieldset {
     #about-people {
         margin-top: 20px;
         margin-bottom: 60px;
+    }
+
+    /*The Register form for tablets and phones displays some fields in two columns*/
+    #user-main-info{
+        grid-template-columns: auto auto;
     }
 }

@@ -10,6 +10,8 @@
         <meta name="author" content="Anastasios Toumazatos, Evgenios Gkritsis">
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
+        <script src="register_validation.js" defer></script>
+
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,7 +39,7 @@
             <section id="register-form-container">
                 <h1>Registration</h1>
 
-                <form method="POST" action="/register-user">
+                <form id="register-form">
 
                     <!--Fieldset for personal details (name, email, address, phone, etc.)-->
                     <fieldset id="user-main-info">
@@ -46,17 +48,23 @@
 
                         <section class="user-input-box">
                             <label for="firstName">First Name</label>
-                            <input type="text" id="firstName" name="firstName" required>
+                            <!--Required field. Uses autocomplete for first names-->
+                            <input type="text" id="firstName" name="firstName" autocomplete="given-name" required>
                         </section>
 
                         <section class="user-input-box">
                             <label for="lastName">Last Name</label>
-                            <input type="text" id="lastName" name="lastName" required>
+                            <!--Required field. Uses autocomplete for last names-->
+                            <input type="text" id="lastName" name="lastName" autocomplete="family-name" required>
                         </section>
 
                         <section class="user-input-box">
                             <label for="email">E-mail</label>
-                            <input type="text" id="email" name="email" placeholder="example@gmail.com">
+                            <!--Errors will be displayed in this <span> section-->
+                            <span class="error"></span>
+                            <input type="text" id="email" name="email" placeholder="example@gmail.com" autocomplete="email" required>
+
+                            
                         </section>
 
                         <section class="user-input-box">
@@ -71,6 +79,7 @@
 
                         <section class="user-input-box">
                             <label for="city">City</label>
+                            <span class="error"></span>
                             <input list="cities" id="city" name="city" autocomplete="on" required>
                             <datalist id="cities">
                                 <option value="Athens">
@@ -88,6 +97,7 @@
 
                         <section class="user-input-box">
                             <label for="country">Country</label>
+                            <span class="error"></span>
                             <input list="countries" id="country" name="country" autocomplete="on" required>
                             <datalist id="countries">
                                 <option value="Greece">
@@ -98,14 +108,19 @@
 
                         <section class="user-input-box">
                             <label for="phoneNumber">Phone Number</label>
+                            <!--
+                                We use autocomplete for any stored phone numbers to assist the user (used in all tel fields).
+                                We also use pattern matching to validate the input
+                            -->
                             <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="69x-xxx-xxxx" 
-                                pattern="69[0-9]{1}-[0-9]{3}-[0-9]{4}" title="69x-xxx-xxxx" required>
+                                pattern="69[0-9]{1}-[0-9]{3}-[0-9]{4}" title="69x-xxx-xxxx" autocomplete="tel-local" required>
                         </section>
 
                         <section class="user-input-box">
                             <label for="phoneNumber2">Second Phone Number (optional)</label>
+                            <span class="error"></span> 
                             <input type="tel" id="phoneNumber2" name="phoneNumber" placeholder="69x-xxx-xxxx" 
-                                pattern="69[0-9]{1}-[0-9]{3}-[0-9]{4}" title="69x-xxx-xxxx">
+                                pattern="69[0-9]{1}-[0-9]{3}-[0-9]{4}" title="69x-xxx-xxxx" autocomplete="tel-local">   
                         </section>
 
                     </fieldset>
@@ -149,13 +164,15 @@
                             
                             <section class="user-input-box">
                                 <label for="card-number">Card Number</label>
+                                <span class="error"></span>
                                 <!--We specify the pattern of the requested format for the field, and a title for the error message to guide the user-->
                                 <input type="text" name="card-number" id="card-number" placeholder="xxxx-xxxx-xxxx-xxxx" 
-                                pattern="[0-9]{4}[-]{1}[0-9]{4}[-]{1}[0-9]{4}[-]{1}[0-9]{4}" title="xxxx-xxxx-xxxx-xxxx, every x is a number [1-9]">
+                                    pattern="[0-9]{4}[-]{1}[0-9]{4}[-]{1}[0-9]{4}[-]{1}[0-9]{4}" title="xxxx-xxxx-xxxx-xxxx, every x is a number [1-9]">
                             </section>
 
                             <section class="user-input-box">
                                 <label for="cvv">CVV</label>
+                                <span class="error"></span>
                                 <input type="text" name="cvv" id="cvv" pattern="[0-9]{3}" title="3-digit number, e.g. 123, 957, 235, etc." placeholder="123">
                             </section>
                         </section>
@@ -190,17 +207,19 @@
 
                         <section class="user-input-box">
                             <label for="username">Username</label>
-                            <input type="text" name="username" id="username" placeholder="max 20 characters" required>
+                            <input type="text" name="username" id="username" placeholder="sharles_lerchlerc" required>
                         </section>
 
                         <section id="password-container">
                             <section class="user-input-box">
                                 <label for="password1">Password</label>
+                                <span class="error"></span>
                                 <input type="password" name="password_1" id="password1" placeholder="8-20 characters" required>
                             </section>
                                 
                             <section class="user-input-box">
                                 <label for="password2">Repeat password</label>
+                                <span class="error"></span>
                                 <input type="password" name="password_2" id="password2" placeholder="8-20 characters" required>
                             </section>
 
@@ -231,7 +250,7 @@
                         <section class="user-input-box">
                             <label for="contact-number">Contact number (leave empty if you chose e-mail)</label>
                             <input type="tel" name="contact_number" id="contact-number" placeholder="69x-xxx-xxxx" 
-                                pattern="69[0-9]{1}-[0-9]{3}-[0-9]{4}" title="69x-xxx-xxxx">
+                                pattern="69[0-9]{1}-[0-9]{3}-[0-9]{4}" title="69x-xxx-xxxx" autocomplete="tel-local">
                         </section>
 
                         <article>
@@ -257,7 +276,8 @@
                         <section class="register-question">
                             <p>How many times do you usually shop online in a month?</p>
                             <section class="user-input-box">
-                                <input type="number" name="question1" id="question1">
+                                <!--Max number constraint (you cannot shop more than 31 days in a month)-->
+                                <input type="number" name="question1" id="question1" max="31">
                             </section>
                         </section>
                         
@@ -329,7 +349,7 @@
                     </fieldset>
                     <!--Submit button that upon clicking initializes the validation process-->
                     <section class="jstf-center">
-                        <input type="submit" name="submit" value="Submit" id="submit-button">
+                        <button type="submit" name="submit" id="submit-button">Submit</button>
                     </section>
                 </form>
             </section>
