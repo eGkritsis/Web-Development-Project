@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WikiShop - Categories</title>
+    </head>
+
+    <body>
+        <h1>Categories</h1>
+        <ul id="categories-list">
+            <!-- The categories will be inserted here by Handlebars -->
+        </ul>
+
+        <!-- This is the Handlebars template for a category -->
+        <script id="category-template" type="text/x-handlebars-template">
+            <li>
+            <h2>{{name}}</h2>
+            <p>{{description}}</p>
+            <img src="{{imageUrl}}" alt="{{name}}">
+            </li>
+        </script>
+
+        <!-- Include the Handlebars library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+        <!-- Include your JavaScript file -->
+        <script src="wikishop.js"></script>
+    </body>
+</html>
+
+
+
+  
