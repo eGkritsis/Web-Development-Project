@@ -1,31 +1,60 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>WikiShop - Categories</title>
+        <title>WikiShop Product Categories</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Product Categories">
+        <meta name="author" content="Anastasios Toumazatos, Evgenios Gkritsis">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+        <link rel="stylesheet" href="style.css"> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500&display=swap" rel="stylesheet"> 
     </head>
-
+    
     <body>
-        <h1>Categories</h1>
-        <ul id="categories-list">
-            <!-- The categories will be inserted here by Handlebars -->
-        </ul>
+        <header>
+            <h1>WikiShop Product Categories</h1>
+        </header>
 
-        <!-- This is the Handlebars template for a category -->
-        <script id="category-template" type="text/x-handlebars-template">
-            <li>
-            <h2>{{name}}</h2>
-            <p>{{description}}</p>
-            <img src="{{imageUrl}}" alt="{{name}}">
-            </li>
+        <main>      
+            <section id="categories"> 
+            <!-- Handlebars template for rendering a list of categories -->
+                <script id="category-template" type="text/x-handlebars-template">
+                    {{#each categories}}
+                    <section class="category">
+                        <a href="/categories/{{id}}/products">
+                        <img src="{{img_url}}" alt="{{title}}">
+                        <p>{{title}}</p>
+                        </a>
+                        <section id="subcategories-{{id}}"></section>
+                    </section>
+                    {{/each}}
+                </script>
+            </section>
+        </main>
+
+        <footer class="jstf-center">
+            <p>Copyright © 2022 • Kubrik | Designed by 
+                <a href="https://github.com/eGkritsis">Eugenios Gkritsis</a>
+                &nbsp;
+                <a href="https://github.com/toumazatos">Anastasios Toumazatos</a>
+            </p>
+        </footer>
+
+         <!-- Include Handlebars and fetch libraries -->
+         <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/fetch-ie8@1.5.0/fetch.js"></script>
+         <script src="wikishop.js"></script>
+
+         <script id="subcategory-template" type="text/x-handlebars-template">
+            <ul>
+              {{#each subcategories}}
+              <li><a href="/categories/{{id}}/products">{{title}}</a></li>
+              {{/each}}
+            </ul>
         </script>
-
-        <!-- Include the Handlebars library -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
-        <!-- Include your JavaScript file -->
-        <script src="wikishop.js"></script>
+        
     </body>
 </html>
-
-
-
-  
