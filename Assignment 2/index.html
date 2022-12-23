@@ -24,11 +24,11 @@
                 <script id="category-template" type="text/x-handlebars-template">
                     {{#each categories}}
                     <section class="category">
-                        <a href="/categories/{{id}}/products">
-                        <img src="{{img_url}}" alt="{{title}}">
-                        <p>{{title}}</p>
+                        <a href="./category.html?id={{id}}"> <!--BUG (most likely)-->
+                            <img src="{{img_url}}" alt="{{title}}">
+                            <p>{{title}}: {{id}}</p>
+                            <p id="id_here">{{id}}</p>
                         </a>
-                        <section id="subcategories-{{id}}"></section>
                     </section>
                     {{/each}}
                 </script>
@@ -47,14 +47,6 @@
          <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/fetch-ie8@1.5.0/fetch.js"></script>
          <script src="wikishop.js"></script>
-
-         <script id="subcategory-template" type="text/x-handlebars-template">
-            <ul>
-              {{#each subcategories}}
-              <li><a href="/categories/{{id}}/products">{{title}}</a></li>
-              {{/each}}
-            </ul>
-        </script>
         
     </body>
 </html>
