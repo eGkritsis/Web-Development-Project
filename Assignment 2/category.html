@@ -16,24 +16,25 @@
     <body>
 
         <header>
-            <h1>WikiShop Category Products</h1>
+            <h1 class="pageTitle">WikiShop Category Products</h1>
         </header>
 
         <main>
-            <section id="products">
-                <!-- Handlebars template for rendering a list of products -->
-                <script id="product-template" type="text/x-handlebars-template">
+            <section id="products"></section>
+                
+            <!-- Handlebars template for rendering a list of products -->
+            <script id="product-template" type="text/x-handlebars-template">
                 {{#each products}}
-                <section class="product">
-                    <img src="{{img_url}}" alt="{{title}}">
-                    <p>{{title}}</p>
-                    <p>Price: {{price}}</p>
-                    <p>{{description}}</p>
-                </section>
+                    <section class="product">
+                        <img src="{{image}}" alt="{{title}}">
+                        <h2>{{title}}</h2>
+                        <h4>Id: {{id}}</h4>
+                        <p>{{description}}</p>
+                        <h3>Cost: {{cost}}€</h3>
+                    </section>
                 {{/each}}
-                </script>
-            </section>
-
+            </script>
+            
         </main>
 
         <footer class="jstf-center">
@@ -44,9 +45,10 @@
             </p>
         </footer>
         
+
         <!-- Include Handlebars and fetch libraries -->
         <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/fetch-ie8@1.5.0/fetch.js"></script>
-        <script src="wikishop.js"></script>
+        <script src="category.js"></script>
     </body>
 </html>
