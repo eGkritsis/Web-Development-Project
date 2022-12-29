@@ -152,6 +152,10 @@ footer {
     padding: 10px;
 }
 
+.product h5 {
+    padding: 10px;
+}
+
 .product p {
     padding: 10px;
 
@@ -161,6 +165,29 @@ footer {
     border-color: black;
     transition: 1.2s;
 }
+
+/* Code for filter radio in category.html */
+
+/*
+#filter {
+    display: flex;
+    flex-direction: column;
+}
+  
+.radio__input {
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+  
+.radio__label {
+    display: block;
+    margin-top: 10px;
+    line-height: 2em;
+}
+*/  
+
+  
 
 /* Colors for link interactions.*/
 a:link {
