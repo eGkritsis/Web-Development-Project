@@ -1,31 +1,77 @@
-// Fetch categories and subcategories from the API and render them on the page
-function fetchCategories() {
-    fetch('https://wiki-shop.onrender.com/categories/', {
-		Method: 'GET'
-	}).then(response => {
-    if (response.status >= 200 && response.status < 300) {
-      return response.json();
-    } else {
-      console.log("error");
+const express = require('express')
+const path = require('path')
+const uuid = require('uuid');
+const app = express()
+const port = 8080
+
+app.listen(port)
+
+/* 
+    Serve static content from directory "public",
+    it will be accessible under path /, 
+    e.g. http://localhost:8080/index.html
+*/
+app.use(express.static('public'))
+
+// parse url-encoded content from body
+app.use(express.urlencoded({ extended: false }))
+
+// parse application/json content from body
+app.use(express.json())
+
+// serve index.html as content root
+app.get('/', function(req, res){
+
+    var options = {
+        root: path.join(__dirname, 'public')
     }
-  }).then(categories => {
 
-        // Compile the Handlebars template
-        const template = Handlebars.compile(
-          document.getElementById('category-template').innerHTML
-        );
-        // Render the template with the fetched categories
-        const html = template({categories});
-        // Insert the rendered HTML into the page
-        document.getElementById('categories').innerHTML = html;
-      }).catch(error => {
-        console.log(error);
-      });
-}
+    res.sendFile('index.html', options, function(err){
+        console.log(err)
+    })
+})
 
-fetchCategories();
+// Upon starting the application, a series of users with specific usernames and passwords will be automatically created 
 
+const users = [
+	{
+	  username: 'user1',
+	  password: 'password1'
+	},
+	{
+	  username: 'user2',
+	  password: 'password2'
+	},
+	{
+	  username: 'user3',
+	  password: 'password3'
+	},
+	{
+		username: 'admin',
+		password: 'admin'
+	}
+];
 
+// Route: /category.html
+app.post('/category.html', (req, res) => {
+	const username = req.body.username;
+	const password = req.body.password;
 
+	// Validates the input to make sure that both 'username' and 'password' are provided.
+	// If either of them is missing, it returns a 400 Bad Request response with an error message.
+	if (!username || !password) {
+		return res.status(400).json({ error:'Invalid input' });
+	}
 
+	// Search the 'users' array for a user with matching 'username' and 'password'
+	const user = users.find(user => user.username === username && user.password === password);
 
+	if (!user) {
+		// If user is not found, return 401 Unauthorized response with an error message
+		return res.status(401).json({ error: "Invalid username or password" });
+	} else {
+		// If user is found, generate a new session ID
+		const sessionId = uuid.v4();
+		return res.status(200).json({ sessionId });
+	}	
+})
