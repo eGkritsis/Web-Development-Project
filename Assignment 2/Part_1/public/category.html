@@ -1,0 +1,87 @@
+<!-- category.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WikiShop Category Products</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Category Products">
+        <meta name="author" content="Anastasios Toumazatos, Evgenios Gkritsis">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+        <link rel="stylesheet" href="./css/style.css"> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+
+        <header>
+            <h1 class="pageTitle">WikiShop Category Products</h1>
+        </header>
+
+        <main>
+
+            <header>
+                <section class="login">
+                    <form method="post" id="login-form">
+                        <!-- user input-->
+                        <label for="username">Username:</label><br>
+                        <input type="text" id="username" name="username" required><br>
+                        <label for="password">Password:</label><br>
+                        <input type="password" id="password" name="password" required><br><br>
+                        <!-- submit button -->
+                        <button type="submit" onclick="LS(event)" value="login">Submit</button>
+                        <!-- Message Section -->
+                        <section id="message"></section>
+                      </form> 
+                </section>                 
+            </header>
+
+            <aside>
+                <section id="filter">
+                    <input class="radio__input" type="radio" name="myRadio" id="all" value="all" onclick="filterProducts(value)" checked>
+                    <label class="radio__label" for="all">All</label>
+                    <section id="filter-radio"></section>
+                </section>
+                
+                <script id="filter-template" type="text/x-handlebars-template">
+                    {{#each subcategories}}
+                        <input class="radio__input" type="radio" name="myRadio" id="{{title}}" value="{{id}}" onclick="filterProducts(value)">
+                        <label class="radio__label" for="{{title}}">{{title}}</label>
+                    {{/each}}
+                </script>
+            </aside>
+            
+            <section id="products"></section>
+                
+            <!-- Handlebars template for rendering a list of products -->
+            <script id="product-template" type="text/x-handlebars-template">
+                {{#each products}}
+                    <section class="product" data-subcategory_id="{{subcategory_id}}">
+                        <img src="{{image}}" alt="{{title}}">
+                        <h2>{{title}}</h2>
+                        <h4>Id: {{id}}</h4>
+                        <h5>Subcategory: {{subcategory_id}}</h5>
+                        <p>{{description}}</p>
+                        <h3>Cost: {{cost}}€</h3>
+                    </section>
+                {{/each}}
+            </script>
+            
+        </main>
+
+        <footer class="jstf-center">
+            <p>Copyright © 2022 • Kubrik | Designed by 
+                <a href="https://github.com/eGkritsis">Eugenios Gkritsis</a>
+                &nbsp;
+                <a href="https://github.com/toumazatos">Anastasios Toumazatos</a>
+            </p>
+        </footer>
+        
+
+        <!-- Include Handlebars and fetch libraries -->
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fetch-ie8@1.5.0/fetch.js"></script>
+        <script src="./js/category.js"></script>
+    </body>
+</html>
