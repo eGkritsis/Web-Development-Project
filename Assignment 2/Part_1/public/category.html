@@ -17,20 +17,21 @@
 
         <header>
             <h1 class="pageTitle">WikiShop Category Products</h1>
+            <p id="cart-msg"></p>
         </header>
 
         <main>
 
             <header>
                 <section class="login">
-                    <form method="post" id="login-form">
+                    <form method="post" id="login-form" > 
                         <!-- user input-->
                         <label for="username">Username:</label><br>
                         <input type="text" id="username" name="username" required><br>
                         <label for="password">Password:</label><br>
                         <input type="password" id="password" name="password" required><br><br>
                         <!-- submit button -->
-                        <button type="submit" onclick="LS(event)" value="login">Submit</button>
+                        <button type="submit" value="login">Login</button> <!-- onclick=ls(event)-->
                         <!-- Message Section -->
                         <section id="message"></section>
                       </form> 
@@ -46,7 +47,7 @@
                 
                 <script id="filter-template" type="text/x-handlebars-template">
                     {{#each subcategories}}
-                        <input class="radio__input" type="radio" name="myRadio" id="{{title}}" value="{{id}}" onclick="filterProducts(value)">
+                        <input class="radio__input" type="radio" name="myRadio" id="{{title}}" value="{{id}}" onclick="filterProducts(value)"> 
                         <label class="radio__label" for="{{title}}">{{title}}</label>
                     {{/each}}
                 </script>
@@ -58,12 +59,16 @@
             <script id="product-template" type="text/x-handlebars-template">
                 {{#each products}}
                     <section class="product" data-subcategory_id="{{subcategory_id}}">
-                        <img src="{{image}}" alt="{{title}}">
-                        <h2>{{title}}</h2>
-                        <h4>Id: {{id}}</h4>
-                        <h5>Subcategory: {{subcategory_id}}</h5>
-                        <p>{{description}}</p>
-                        <h3>Cost: {{cost}}€</h3>
+                        <img data-value="{{image}}" src="{{image}}" alt="{{title}}">
+                        <h2 data-value="{{title}}">{{title}}</h2>
+                        <h4 data-value="{{id}}">Id: {{id}}</h4>
+                        <h5 data-value="{{subcategory_id}}">Subcategory: {{subcategory_id}}</h5>
+                        <p data-value="{{description}}">{{description}}</p>
+                        <h3 data-value="{{cost}}">Cost: {{cost}}€</h3>
+                        <form method="post" id="buy-form">
+                            <input type="hidden" name="{{id}}" value="">
+                            <button type="submit">Buy now</button>
+                        </form>
                     </section>
                 {{/each}}
             </script>
