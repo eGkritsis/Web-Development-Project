@@ -1,8 +1,11 @@
-const express = require('express')
-const path = require('path')
+const express = require('express');
+const path = require('path');
 const uuid = require('uuid');
-const app = express()
-const port = 8080
+const app = express();
+const port = 8080;
+const User = require('./models/user');
+const Cart = require('./models/cart');
+const Product = require('./models/product');
 
 app.listen(port)
 
@@ -11,6 +14,7 @@ app.listen(port)
     it will be accessible under path /, 
     e.g. http://localhost:8080/index.html
 */
+
 app.use(express.static('public'))
 
 // parse url-encoded content from body
@@ -33,27 +37,17 @@ app.get('/', function(req, res){
 
 // Upon starting the application, a series of users with specific usernames and passwords will be automatically created 
 
-const users = [
-	{
-	  username: 'user1',
-	  password: 'password1'
-	},
-	{
-	  username: 'user2',
-	  password: 'password2'
-	},
-	{
-	  username: 'user3',
-	  password: 'password3'
-	},
-	{
-		username: 'admin',
-		password: 'admin'
-	}
-];
+const users = [];
+
+const user1 = new User('user1', 'password1');
+const user2 = new User('user2', 'password2');
+const user3 = new User('user3', 'password3');
+const user4 = new User('admin', 'admin');
+
+users.push(user1, user2, user3, user4);
 
 // Route: /category.html
-app.post('/category.html', (req, res) => {
+app.post('/LoginService', (req, res) => {
 	const username = req.body.username;
 	const password = req.body.password;
 
@@ -70,8 +64,19 @@ app.post('/category.html', (req, res) => {
 		// If user is not found, return 401 Unauthorized response with an error message
 		return res.status(401).json({ error: "Invalid username or password" });
 	} else {
-		// If user is found, generate a new session ID
+		// If user is found, generate a new session ID and return 200 OK response 
 		const sessionId = uuid.v4();
+		user.sessionId = sessionId;
 		return res.status(200).json({ sessionId });
 	}	
+})
+
+
+// Route: /CIS
+app.post('/CIS', (req, res) => {
+	// cart functionality goes here..
+	// prosthiki sto kalathi 
+	// elegxos an username antistoixei sto sessionId
+	// epistrofh kwdikou apokrishs
+	// an dn einai sundedemenos -> koumpi bgazei error
 })
