@@ -1,3 +1,7 @@
+//import { Cart } from "../../models/cart";
+//import { Product } from "../../models/product";
+//import { User } from "../../models/user";
+
 function fetchProducts() {
 	let params = new URLSearchParams(window.location.search);
 	let categoryId = params.get('categoryId');
@@ -21,6 +25,9 @@ function fetchProducts() {
         const html = template({products});
         // Insert the rendered HTML into the page
         document.getElementById('products').innerHTML = html;
+
+		// Create product objects maybe?
+
     }).catch(error => {
         console.log(error);
     });
@@ -54,8 +61,9 @@ function fetchSubcategories() {
     });
 }
 
-
 function filterProducts(value) {
+
+	console.log("here!!");
 	// Get the currently displayed products
 	const displayedProducts = document.querySelectorAll('.product');
 
@@ -79,22 +87,25 @@ function filterProducts(value) {
 	}
 }
 
+const form = document.getElementById('login-form');
+form.addEventListener('submit', LS);
+
+// Login Service - LS
 function LS(event) {
 	// Prevent the default form submission behavior
-	// xwris auto tha se petaksei se ena keno page me to sessionId h me error mhnuma *na doume ti apta 2 theloume h pws prepei na ginei*
 	event.preventDefault();
-
-	const form = document.getElementById('login-form');
+	
 	const formData = new FormData(form);
 	const username = formData.get('username');
 	const password = formData.get('password');
 
-	// Send a POST request to the '/category.html' route
-	fetch('/category.html', {
+	// Send a POST request to the '/LoginService' route
+	fetch('http://127.0.0.1:8080/LoginService', {
 		method: 'POST',
 		body: JSON.stringify({ username, password }),
 		headers: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			 Accept: "application/json",
 		}
 	})
 	.then(response => {
@@ -122,7 +133,71 @@ function LS(event) {
 	});
 }
 
+const cisForm = document.getElementById('buy-form');
+form.addEventListener('submit', CIS);
+
+// Cart Item Service - CIS
+function CIS(event) {
+	// Prevent the default form submission behavior
+	event.preventDefault();
+
+	// Retrieve product's information 
+	
+	const productElement = document.getElementsByClassName('product')[0];
+
+	const image = productElement.children[0].getAttribute('data-value');
+	const title = productElement.children[1].dataset.value;
+	const productId = productElement.children[2].dataset.value;
+	const subcategoryId = productElement.children[3].dataset.value;
+	const description = productElement.children[4].dataset.value;
+	const cost = productElement.children[5].dataset.value;
+
+	// Retrieve user's information
+	//const username = ??
+	//const sessionId = ??
+	
+	//console.log(username);
+	//console.log(sessionId);
+	console.log(title);
+	console.log(cost);
+	console.log(productId);
+	console.log(description);
+	console.log(image);
+	console.log(subcategoryId);
+
+	// Send a POST request to the '/CIS' route
+	fetch('http://127.0.0.1:8080/CIS', {
+		method: 'POST',
+		body: JSON.stringify({ username, sessionId, productId, title, subcategoryId, description, cost, image }),
+		headers: {
+			'Content-Type': 'application/json',
+			 Accept: "application/json",
+		}
+	})
+	.then(response => {
+		if (response.status >= 200 && response.status < 300) {
+			return response.json();
+		} else {
+			throw new Error('Failed to add product to Cart');
+		}
+	})
+	.then(data => {
+		// Logs 
+		console.log(data); 
+
+		// Display a successful login message
+		const messageSection = document.getElementById('cart-msg');
+		messageSection.innerHTML = 'Product added to your Cart';
+		messageSection.classList.add('success');
+	}).catch(error => {
+		console.log(error);
+
+		// Display a failed login message
+		const messageSection = document.getElementById('cart-msg');
+		messageSection.innerHTML = 'Failed to add product to your Cart';
+		messageSection.classList.add('error');
+	});
+}
 
 fetchSubcategories();
 fetchProducts();
-
