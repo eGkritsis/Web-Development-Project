@@ -31,7 +31,7 @@
                         <label for="password">Password:</label><br>
                         <input type="password" id="password" name="password" required><br><br>
                         <!-- submit button -->
-                        <button type="submit" value="login">Login</button> <!-- onclick=ls(event)-->
+                        <button type="submit" value="login">Login</button> 
                         <!-- Message Section -->
                         <section id="message"></section>
                       </form> 
@@ -65,10 +65,13 @@
                         <h5 data-value="{{subcategory_id}}">Subcategory: {{subcategory_id}}</h5>
                         <p data-value="{{description}}">{{description}}</p>
                         <h3 data-value="{{cost}}">Cost: {{cost}}€</h3>
+                        <!--
                         <form method="post" id="buy-form">
                             <input type="hidden" name="{{id}}" value="">
                             <button type="submit">Buy now</button>
                         </form>
+                        -->
+                        <button type="submit" id="buy-btn" onclick="CIS(event, this.parentNode)">Buy now</button>
                     </section>
                 {{/each}}
             </script>
