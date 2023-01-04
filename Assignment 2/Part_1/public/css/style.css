@@ -166,13 +166,72 @@ footer {
     transition: 1.2s;
 }
 
-/* Code for filter radio in category.html */
+/*Filters section*/
+#login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    width: 17em;
+    background-color: rgb(241, 241, 241);
+    border: black solid 2px;
+    border-radius: 2.5em;
+}
 
-/*
-#filter {
+#login-form h1 {
+    margin-bottom: 1em;
+}
+
+/* Shape rules for input boxes in the form*/
+#login-form input[type="text"], input[type="password"]{
+    margin: 0.5em 0;
+    padding: 0.5em;
+    width: 17em;
+    box-sizing: border-box;
+    border-radius: 1em;
+    border: black solid 2px;
+}
+
+#login-form button{
+    margin-top: 1;
+    background-color: black;
+    padding: 0.55em 1.2em;
+    color: #f3f3f3;
+    cursor: pointer;
+    border-radius: 1.3em;
+    font-size: 1.1em;
+    width: 10em;
+}
+
+#login-form input:focus{
+    outline: none;
+    border: 2px solid #f44336;
+}
+
+/*Filters section*/
+
+/*Arrange dynamically generated filter categories in a column*/
+#filter-radio {
     display: flex;
     flex-direction: column;
 }
+
+#filter {
+    padding: 2em;
+    width: 10em;
+    background-color: rgb(241, 241, 241);
+    border: black solid 2px;
+    border-radius: 2.5em;
+    margin-left: 2em;
+    margin-top: 3em;
+}
+
+
+/* Code for filter radio in category.html */
+
+/*
+
   
 .radio__input {
     display: block;

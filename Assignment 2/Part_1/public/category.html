@@ -22,24 +22,31 @@
 
         <main>
 
-            <header>
-                <section class="login">
-                    <form method="post" id="login-form" > 
-                        <!-- user input-->
+            <section class="login jstf-center">
+                <form method="post" id="login-form" > 
+                    <h1>User Login</h1>
+                    <!-- Message Section (Log-in failed/succesful)-->
+                    <section id="message"></section>
+                    <!-- user input-->
+                    <article>
                         <label for="username">Username:</label><br>
                         <input type="text" id="username" name="username" required><br>
+                    </article>
+                    <article>
                         <label for="password">Password:</label><br>
                         <input type="password" id="password" name="password" required><br><br>
-                        <!-- submit button -->
-                        <button type="submit" value="login">Login</button> 
-                        <!-- Message Section -->
-                        <section id="message"></section>
-                      </form> 
-                </section>                 
-            </header>
+                    </article>
+                    
+                    <!-- submit button -->
+                    <button type="submit" value="login">Login</button> 
+                    
+                    </form> 
+            </section>                 
 
             <aside>
+
                 <section id="filter">
+                    <h1>Search Filters:</h1>
                     <input class="radio__input" type="radio" name="myRadio" id="all" value="all" onclick="filterProducts(value)" checked>
                     <label class="radio__label" for="all">All</label>
                     <section id="filter-radio"></section>
@@ -47,8 +54,10 @@
                 
                 <script id="filter-template" type="text/x-handlebars-template">
                     {{#each subcategories}}
-                        <input class="radio__input" type="radio" name="myRadio" id="{{title}}" value="{{id}}" onclick="filterProducts(value)"> 
-                        <label class="radio__label" for="{{title}}">{{title}}</label>
+                        <article>
+                            <input class="radio__input" type="radio" name="myRadio" id="{{title}}" value="{{id}}" onclick="filterProducts(value)"> 
+                            <label class="radio__label" for="{{id}}">{{title}}</label>
+                        </article>
                     {{/each}}
                 </script>
             </aside>
