@@ -1,4 +1,5 @@
 const User = require("./user");
+const Product = require("./product");
 
 class Cart {
     constructor(user) {
@@ -9,7 +10,6 @@ class Cart {
     addProduct(product) {
         if (product instanceof Product) {
             this.products.push(product);
-            //product.setCart(this);
         } else {
             throw new Error('The item being added to the cart is not a product.');
         }
@@ -21,7 +21,6 @@ class Cart {
             const index = this.products.indexOf(product);
             if (index !== -1) {
                 this.products.splice(index, 1);
-                //product.setCart(null);
             } else {
                 throw new Error('The item being removed from the cart is not a product.');
             }
@@ -31,7 +30,10 @@ class Cart {
     getSize() {
         return { size: this.products.length };
     }
+
+    getProducts() {
+        return this.products;
+    }
 }
 
-//export {Cart}; 
 module.exports = Cart;
