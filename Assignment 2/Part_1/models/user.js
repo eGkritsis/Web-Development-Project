@@ -2,7 +2,6 @@ class User {
     constructor(username, password) {
         this._username = username;
         this._password = password;
-        this._sessionId = null;
     }
 
     get username() {
@@ -19,14 +18,6 @@ class User {
 
     set password(password) {
     this._password = password;
-    }
-
-    get sessionId() {
-    return this._sessionId;
-    }
-
-    set sessionId(sessionId) {
-    this._sessionId = sessionId;
     }
 }
 
