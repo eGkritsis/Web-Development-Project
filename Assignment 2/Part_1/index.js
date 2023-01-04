@@ -4,8 +4,9 @@ const uuid = require('uuid');
 const app = express();
 const port = 8080;
 const User = require('./models/user');
-const Cart = require('./models/cart');
 const Product = require('./models/product');
+const activeUsers = require('./models/activeUsers');
+const Cart = require('./models/cart');
 
 app.listen(port)
 
@@ -35,9 +36,11 @@ app.get('/', function(req, res){
     })
 })
 
-// Upon starting the application, a series of users with specific usernames and passwords will be automatically created 
+// * NA DHMIOURGHTHE LSITA ME CARTS GIA NA KRATIOUNTAI OSO O SERVER DEN EXEI KANEI RESTART (REFRESHED SELIDA) *
 
+// Upon starting the application, a series of users with specific usernames and passwords will be automatically created 
 const users = [];
+const active = new activeUsers();
 
 const user1 = new User('user1', 'password1');
 const user2 = new User('user2', 'password2');
@@ -46,8 +49,9 @@ const user4 = new User('admin', 'admin');
 
 users.push(user1, user2, user3, user4);
 
-// Route: /category.html
+// Route: /LoginService
 app.post('/LoginService', (req, res) => {
+	console.log("Received login service request");
 	const username = req.body.username;
 	const password = req.body.password;
 
@@ -64,9 +68,17 @@ app.post('/LoginService', (req, res) => {
 		// If user is not found, return 401 Unauthorized response with an error message
 		return res.status(401).json({ error: "Invalid username or password" });
 	} else {
+
 		// If user is found, generate a new session ID and return 200 OK response 
 		const sessionId = uuid.v4();
-		user.sessionId = sessionId;
+		
+		// Make user the active user 
+		active.addUser(user, sessionId);
+
+		// Create user's cart
+		let cart = new Cart();
+		cart.user = user;
+
 		return res.status(200).json({ sessionId });
 	}	
 })
@@ -74,9 +86,48 @@ app.post('/LoginService', (req, res) => {
 
 // Route: /CIS
 app.post('/CIS', (req, res) => {
-	// cart functionality goes here..
-	// prosthiki sto kalathi 
-	// elegxos an username antistoixei sto sessionId
-	// epistrofh kwdikou apokrishs
-	// an dn einai sundedemenos -> koumpi bgazei error
+	console.log("Received Cart Input Service request");
+	if (active.noOneIsActive()) {
+		return res.status(401).json({ error: "401 Unauthorized, Not logged in"});
+	} else {
+
+		// na xrhsimopoiithei edw h isActive(username, sessionId) aplws dn exoume perasei to username kai to sessionId
+
+		// const username = req.body.username; //etsi tha ta pairname kanonika
+		// const sessionId = req.body.sessionId; //etsi tha ta pairname kanonika
+		// if (isActive(username, sessionId) {
+			// tote eimaste kala kai proxwrame (edw tha mpoun ta apo katw)
+		//} else {
+			// return res.status(401).json({ error: "401 Unauthorized, username does not match sessionId"});
+		//}   
+
+		// den tha xreiastoun otan perasoun sto request ta user kai sessionId
+		const user = active.getActiveUser(); 
+		const sessionId = active.getActiveSessionId();
+		console.log(user, sessionId); 
+
+		// Create a Product instance 
+		const product = new Product(req.body.productId, req.body.title, req.body.subcategoryId, req.body.description, req.body.cost, req.body.image)
+		console.log(product); 
+
+
+		// ISWS BOUN STO LOGIN H ISWS STON SERVER NA TO DOUME
+
+		// Create a Cart instance for the specific User
+		// Check if the user already has a cart in the Active object
+		let cart = active.getCart();
+		
+		if (!cart) {
+			// If not, create a new Cart instance and store it in the Active object
+			cart = new Cart(user);
+			active.setCart(cart);
+		}
+
+		// Add product to user's cart
+		cart.addProduct(product);
+		console.log(cart.getSize());
+		console.log(cart.getProducts());
+
+		return res.status(200).json({ Response: "Product successfully added to user's cart"});
+	}
 })
