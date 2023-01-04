@@ -6,7 +6,6 @@ class Product {
         this.description = description;
         this.cost = cost;
         this.image = image;
-        this.cart = null;
       }
     
     getId() {
@@ -56,15 +55,6 @@ class Product {
     setImage(image) {
     this.image = image;
     }
-
-    setCart(cart) {
-    this.cart = cart;
-    }
-
-    getCart() {
-    return this.cart;
-    }
 }
 
-//export {Product}; 
 module.exports = Product;
