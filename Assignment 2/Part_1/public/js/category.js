@@ -1,7 +1,3 @@
-//import { Cart } from "../../models/cart";
-//import { Product } from "../../models/product";
-//import { User } from "../../models/user";
-
 function fetchProducts() {
 	let params = new URLSearchParams(window.location.search);
 	let categoryId = params.get('categoryId');
@@ -25,8 +21,6 @@ function fetchProducts() {
         const html = template({products});
         // Insert the rendered HTML into the page
         document.getElementById('products').innerHTML = html;
-
-		// Create product objects maybe?
 
     }).catch(error => {
         console.log(error);
@@ -63,7 +57,7 @@ function fetchSubcategories() {
 
 function filterProducts(value) {
 
-	console.log("here!!");
+	console.log("Inside filterProducts");
 	// Get the currently displayed products
 	const displayedProducts = document.querySelectorAll('.product');
 
@@ -90,14 +84,20 @@ function filterProducts(value) {
 const form = document.getElementById('login-form');
 form.addEventListener('submit', LS);
 
+
+//let sessionId = null;
+//let username = null;
+
 // Login Service - LS
 function LS(event) {
+	console.log("Inside LS");
 	// Prevent the default form submission behavior
 	event.preventDefault();
 	
 	const formData = new FormData(form);
 	const username = formData.get('username');
 	const password = formData.get('password');
+	console.log("Credentials received: ", username, password);
 
 	// Send a POST request to the '/LoginService' route
 	fetch('http://127.0.0.1:8080/LoginService', {
@@ -118,6 +118,7 @@ function LS(event) {
 	.then(data => {
 		// Logs the sessionId e.g. { sessionId: "7b3e2313-8553-4cba-88d3-7d3dfd9020b0" }
 		console.log(data); 
+		sessionId = data;
 
 		// Display a successful login message
 		const messageSection = document.getElementById('message');
@@ -133,18 +134,93 @@ function LS(event) {
 	});
 }
 
-const cisForm = document.getElementById('buy-form');
-form.addEventListener('submit', CIS);
+
+//var source = document.querySelector("#product-template").innerHTML;
+//var template = Handlebars.compile(source);
+//document.body.innerHTML = template();
+
+/*
+var cisForm = document.querySelector("#buy-form");
+console.log(cisForm); // Null because the form is being dynamically generated with Handlebars
+console.log("CISFORM!!!");
+
+
+const cisForm = document.getElementById("buy-form");
+console.log(cisForm); // Null because the form is being dynamically generated with Handlebars
+console.log("CISFORM!!!");
+cisForm.addEventListener('submit', CIS);
+*/ 
+
+
+/*
+// Mutation Observer code 
+
+// Select 'product-template' to observe for mutations
+const container = document.getElementById('product-template');
+
+// Create MutationObserver instance 
+const observer = new MutationObserver(mutationHandler);
+
+// Configure the observer
+const config = { 
+	childlist: true,
+	attributes: true,
+	subtree: true,
+	characterData: true
+};
+
+// Start observing the container
+observer.observe(container, config);
+
+// Callback function
+function mutationHandler(mutations) {
+	console.log("Inside mutationHandler");
+	// Check if the form element has been added to the container
+	const cisButton = container.querySelector('#buy-btn');
+	console.log(cisButton);
+	if (cisButton) {
+		// Attach the event listener to the form element
+		cisButton.addEventListener('submit', CIS)
+	} 
+}
+*/
+
+/*
+const targetNode = document.body;
+
+const config = {
+	childlist: true,
+	attributes: true,
+	subtree: true,
+	characterData: true
+};
+
+const mutationHandler = function(mutationsList) {
+  for (let mutation of mutationsList) {
+    if (mutation.type === 'childList') {
+      const forms = mutation.target.getElementsByTagName('form');
+      for (let form of forms) {
+        if (form.id === 'buy-form') {
+          form.addEventListener('submit', CIS);
+        }
+      }
+    }
+  }
+};
+
+const observer = new MutationObserver(mutationHandler);
+
+observer.observe(targetNode, config);
+*/
+
 
 // Cart Item Service - CIS
-function CIS(event) {
+function CIS(event, productElement) {
+	console.log("Inside CIS");
 	// Prevent the default form submission behavior
 	event.preventDefault();
 
 	// Retrieve product's information 
-	
-	const productElement = document.getElementsByClassName('product')[0];
-
 	const image = productElement.children[0].getAttribute('data-value');
 	const title = productElement.children[1].dataset.value;
 	const productId = productElement.children[2].dataset.value;
@@ -153,8 +229,8 @@ function CIS(event) {
 	const cost = productElement.children[5].dataset.value;
 
 	// Retrieve user's information
-	//const username = ??
-	//const sessionId = ??
+	// const username = ?? 
+	//const sessionId = ?? isws upologizetai entos sto server vasei tou username?
 	
 	//console.log(username);
 	//console.log(sessionId);
@@ -165,13 +241,15 @@ function CIS(event) {
 	console.log(image);
 	console.log(subcategoryId);
 
+	
 	// Send a POST request to the '/CIS' route
 	fetch('http://127.0.0.1:8080/CIS', {
 		method: 'POST',
-		body: JSON.stringify({ username, sessionId, productId, title, subcategoryId, description, cost, image }),
+		// ** TODO: Add username + sessionId to the request body **
+		body: JSON.stringify({ productId, title, subcategoryId, description, cost, image }), // + sessionId + username 
 		headers: {
 			'Content-Type': 'application/json',
-			 Accept: "application/json",
+			 Accept: 'application/json',
 		}
 	})
 	.then(response => {
