@@ -12,6 +12,9 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+        
+        <!--Script for custom icons (e.g. shopping cart icon)-->
+        <script src="https://kit.fontawesome.com/c82bcd8173.js" crossorigin="anonymous"></script>
     </head>
     <body>
 
@@ -69,18 +72,23 @@
                 {{#each products}}
                     <section class="product" data-subcategory_id="{{subcategory_id}}">
                         <img data-value="{{image}}" src="{{image}}" alt="{{title}}">
-                        <h2 data-value="{{title}}">{{title}}</h2>
-                        <h4 data-value="{{id}}">Id: {{id}}</h4>
-                        <h5 data-value="{{subcategory_id}}">Subcategory: {{subcategory_id}}</h5>
-                        <p data-value="{{description}}">{{description}}</p>
-                        <h3 data-value="{{cost}}">Cost: {{cost}}€</h3>
+                        <article>
+                            <h2 data-value="{{title}}">{{title}}</h2>
+                            <h4 data-value="{{id}}">Id: {{id}}</h4>
+                            <h5 data-value="{{subcategory_id}}">Subcategory: {{subcategory_id}}</h5>
+                            <p data-value="{{description}}">{{description}}</p>
+                            <h3 data-value="{{cost}}">Cost: {{cost}}€</h3>
+                        </article>
                         <!--
                         <form method="post" id="buy-form">
                             <input type="hidden" name="{{id}}" value="">
                             <button type="submit">Buy now</button>
                         </form>
                         -->
-                        <button type="submit" id="buy-btn" onclick="CIS(event, this.parentNode)">Buy now</button>
+                        <article>
+                            <button type="submit" id="buy-btn" onclick="CIS(event, this.parentNode)">Buy now</button>
+                        </article>
+                        
                     </section>
                 {{/each}}
             </script>

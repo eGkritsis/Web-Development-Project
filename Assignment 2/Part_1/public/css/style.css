@@ -125,10 +125,9 @@ footer {
     border: 2px solid lightgray;
     color: black;
 
-    display: flex;
-    flex-direction: column;
-    gap: 0.2em;
-}
+    display: grid;
+    grid-template-rows: 1fr 1.5fr 3em;
+}    
 
 .product img {
     padding: 10px;
@@ -164,6 +163,18 @@ footer {
 .product:hover {
     border-color: black;
     transition: 1.2s;
+}
+
+.product button {
+    background-color: black;
+    padding: 0.55em 1.2em;
+    color: #f3f3f3;
+    cursor: pointer;
+    border-radius: 1.3em;
+    font-size: 1.1em;
+    width: 10em;
+    position: relative;
+    bottom: 0;
 }
 
 /*Filters section*/
@@ -227,6 +238,7 @@ footer {
     margin-top: 3em;
 }
 
+/*Individual product listings*/
 
 /* Code for filter radio in category.html */
 
