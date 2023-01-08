@@ -93,32 +93,22 @@ app.post('/CIS', (req, res) => {
 
 		// na xrhsimopoiithei edw h isActive(username, sessionId) aplws dn exoume perasei to username kai to sessionId
 
-		// const username = req.body.username; //etsi tha ta pairname kanonika
-		// const sessionId = req.body.sessionId; //etsi tha ta pairname kanonika
-		// if (isActive(username, sessionId) {
-			// tote eimaste kala kai proxwrame (edw tha mpoun ta apo katw)
-		//} else {
-			// return res.status(401).json({ error: "401 Unauthorized, username does not match sessionId"});
-		//}   
+		const username = req.body.globalUsername; 
+		const sessionId = req.body.sessionId; 
 
-		// den tha xreiastoun otan perasoun sto request ta user kai sessionId
-		const user = active.getActiveUser(); 
-		const sessionId = active.getActiveSessionId();
-		console.log(user, sessionId); 
+		if (!active.isActive(username, sessionId)) {
+			return res.status(401).json({ error: "401 Unauthorized, username does not match sessionId"});
+		} 
 
 		// Create a Product instance 
-		const product = new Product(req.body.productId, req.body.title, req.body.subcategoryId, req.body.description, req.body.cost, req.body.image)
-		console.log(product); 
+		const product = new Product(req.body.productId, req.body.title, req.body.subcategoryId, req.body.description, req.body.cost, req.body.image);
 
-
-		// ISWS BOUN STO LOGIN H ISWS STON SERVER NA TO DOUME
-
-		// Create a Cart instance for the specific User
 		// Check if the user already has a cart in the Active object
 		let cart = active.getCart();
 		
 		if (!cart) {
 			// If not, create a new Cart instance and store it in the Active object
+			let user = active.getActiveUser
 			cart = new Cart(user);
 			active.setCart(cart);
 		}
