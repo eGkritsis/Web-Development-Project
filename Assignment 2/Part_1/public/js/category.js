@@ -85,8 +85,8 @@ const form = document.getElementById('login-form');
 form.addEventListener('submit', LS);
 
 
-//let sessionId = null;
-//let username = null;
+let sessionId = null;
+let globalUsername = null;
 
 // Login Service - LS
 function LS(event) {
@@ -118,7 +118,8 @@ function LS(event) {
 	.then(data => {
 		// Logs the sessionId e.g. { sessionId: "7b3e2313-8553-4cba-88d3-7d3dfd9020b0" }
 		console.log(data); 
-		sessionId = data;
+		sessionId = data.sessionId;
+		globalUsername = formData.get('username');
 
 		// Display a successful login message
 		const messageSection = document.getElementById('message');
@@ -230,10 +231,10 @@ function CIS(event, productElement) {
 
 	// Retrieve user's information
 	// const username = ?? 
-	//const sessionId = ?? isws upologizetai entos sto server vasei tou username?
+	//const sessionId = ?? 
 	
-	//console.log(username);
-	//console.log(sessionId);
+	console.log(username);
+	console.log(sessionId);
 	console.log(title);
 	console.log(cost);
 	console.log(productId);
@@ -246,7 +247,7 @@ function CIS(event, productElement) {
 	fetch('http://127.0.0.1:8080/CIS', {
 		method: 'POST',
 		// ** TODO: Add username + sessionId to the request body **
-		body: JSON.stringify({ productId, title, subcategoryId, description, cost, image }), // + sessionId + username 
+		body: JSON.stringify({ sessionId, globalUsername, productId, title, subcategoryId, description, cost, image }), // + sessionId + username 
 		headers: {
 			'Content-Type': 'application/json',
 			 Accept: 'application/json',
@@ -256,7 +257,7 @@ function CIS(event, productElement) {
 		if (response.status >= 200 && response.status < 300) {
 			return response.json();
 		} else {
-			throw new Error('Failed to add product to Cart');
+			throw new Error('Failed to add product to Cart' + response.statusText);
 		}
 	})
 	.then(data => {
