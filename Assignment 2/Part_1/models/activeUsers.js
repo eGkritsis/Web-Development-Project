@@ -15,6 +15,9 @@ class activeUsers {
 
         // Add the new user
         this.users.set(user, sessionId);
+        console.log("Added User to the Active Users Map");
+        console.log("User:" + user.username);
+        console.log("SessionId:" + sessionId);
     }
 
     removeUser(user) {
@@ -23,12 +26,15 @@ class activeUsers {
 
     // Checks if a specific user is active
     isActive(username, sessionId) {
-        for (let [user, userSessionId] of this.users) {
-            if (user.username === username && userSessionId === sessionId) {
+        console.log("Comparing username with sessionId");
+        for (const user of this.users.keys()) {
+            if (user.username === username && this.users.get(user) === sessionId) {
+                console.log("User is active");
                 return true;
             }
-        }
-        return false;
+        } 
+
+        return false
     }
 
     // Checks if no one is active 
@@ -51,6 +57,7 @@ class activeUsers {
     getCart() {
         return this.carts.get(this.getActiveUser().username);
     }
+
 }
 
 module.exports = activeUsers;
