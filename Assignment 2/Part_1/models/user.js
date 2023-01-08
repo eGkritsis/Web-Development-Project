@@ -10,7 +10,7 @@ class User {
 
     set username(username) {
         this._username = username;
-      }
+    }
     
     get password() {
     return this._password;
