@@ -228,20 +228,6 @@ function CIS(event, productElement) {
 	const subcategoryId = productElement.children[3].dataset.value;
 	const description = productElement.children[4].dataset.value;
 	const cost = productElement.children[5].dataset.value;
-
-	// Retrieve user's information
-	// const username = ?? 
-	//const sessionId = ?? 
-	
-	console.log(username);
-	console.log(sessionId);
-	console.log(title);
-	console.log(cost);
-	console.log(productId);
-	console.log(description);
-	console.log(image);
-	console.log(subcategoryId);
-
 	
 	// Send a POST request to the '/CIS' route
 	fetch('http://127.0.0.1:8080/CIS', {
