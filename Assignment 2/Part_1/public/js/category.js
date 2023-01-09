@@ -124,7 +124,7 @@ function LS(event) {
 		// Display a successful login message
 		const messageSection = document.getElementById('message');
 		// Success message displayed in green
-		messageSection.style.color = 'darkgreen'
+		messageSection.style.color = 'darkgreen';
 		messageSection.innerHTML = 'Successful login';
 		messageSection.classList.add('success');
 	}).catch(error => {
@@ -133,7 +133,7 @@ function LS(event) {
 		// Display a failed login message
 		const messageSection = document.getElementById('message');
 		// Success message displayed in red
-		messageSection.style.color = 'red'
+		messageSection.style.color = 'red';
 		messageSection.innerHTML = 'Failed to login';
 		messageSection.classList.add('error');
 	});
@@ -263,17 +263,75 @@ function CIS(event, productElement) {
 
 		// Display a successful login message
 		const messageSection = document.getElementById('cart-msg');
-		messageSection.innerHTML = 'Product added to your Cart';
+
+		messageSection.innerHTML = 'Product added to your Cart!';
+		messageSection.style.visibility = ("visible");
+		messageSection.style.opacity = ("1");
+		// Update the cart size
+		CSS();
 		messageSection.classList.add('success');
+		// Fade out the message after 2 seconds
+		setTimeout(() => {
+			messageSection.style.opacity = ("0");
+		}, 1500)
+
+		setTimeout(() => {
+			messageSection.style.visibility = ("0");
+			messageSection.innerHTML = '';
+		}, 2000)		
 	}).catch(error => {
 		console.log(error);
 
 		// Display a failed login message
 		const messageSection = document.getElementById('cart-msg');
 		messageSection.innerHTML = 'Failed to add product to your Cart';
+		messageSection.style.visibility = ("visible");
+		messageSection.style.opacity = ("1");
 		messageSection.classList.add('error');
+		// Fade out the message after 2 seconds
+		setTimeout(() => {
+			messageSection.style.opacity = ("0");
+		}, 1500)
+
+		setTimeout(() => {
+			messageSection.style.visibility = ("0");
+			messageSection.innerHTML = '';
+		}, 2000)	
 	});
 }
+
+// Cart Size Service - CSS
+function CSS() {
+	console.log("Inside CSS");
+	
+	// Send a POST request to the '/CSS' route
+	fetch('http://127.0.0.1:8080/CSS', {
+		method: 'POST',
+
+		body: JSON.stringify({ sessionId, globalUsername}), // + sessionId + username 
+		headers: {
+			'Content-Type': 'application/json',
+			 Accept: 'application/json',
+		}
+	})
+	.then(response => {
+		// Check if everything went smoothly
+		if (response.status >= 200 && response.status < 300) {
+			return response.json();
+		} else {
+			throw new Error('Cart size could not be retrieved' + response.statusText);
+		}
+	})
+	.then(data => {
+		// If everything went fine, update the cart size.
+		const cartSize = document.getElementById("cart-count");
+		cartSize.innerHTML = data.size;
+	})
+	.catch((error) => {
+		console.error(error);
+	});
+}
+
 
 fetchSubcategories();
 fetchProducts();

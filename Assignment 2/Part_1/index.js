@@ -121,3 +121,26 @@ app.post('/CIS', (req, res) => {
 		return res.status(200).json({ Response: "Product successfully added to user's cart"});
 	}
 })
+
+
+// Route: /CSS
+app.post('/CSS', (req, res) => {
+	console.log("Received Cart Size Service request");
+	if (active.noOneIsActive()) {
+		return res.status(401).json({ error: "401 Unauthorized, Not logged in"});
+	} else {
+		const username = req.body.globalUsername; 
+		const sessionId = req.body.sessionId; 
+
+		if (!active.isActive(username, sessionId)) {
+			return res.status(401).json({ error: "401 Unauthorized, username does not match sessionId"});
+		} 
+
+		// Check if the user already has a cart in the Active object
+		let cart = active.getCart();
+		cartSize = cart.getSize();
+		console.log(cartSize);
+		
+		return res.status(200).json(cartSize);
+	}
+})
