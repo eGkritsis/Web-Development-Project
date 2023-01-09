@@ -123,6 +123,8 @@ function LS(event) {
 
 		// Display a successful login message
 		const messageSection = document.getElementById('message');
+		// Success message displayed in green
+		messageSection.style.color = 'darkgreen'
 		messageSection.innerHTML = 'Successful login';
 		messageSection.classList.add('success');
 	}).catch(error => {
@@ -130,6 +132,8 @@ function LS(event) {
 
 		// Display a failed login message
 		const messageSection = document.getElementById('message');
+		// Success message displayed in red
+		messageSection.style.color = 'red'
 		messageSection.innerHTML = 'Failed to login';
 		messageSection.classList.add('error');
 	});
@@ -222,12 +226,19 @@ function CIS(event, productElement) {
 	event.preventDefault();
 
 	// Retrieve product's information 
-	const image = productElement.children[0].getAttribute('data-value');
-	const title = productElement.children[1].dataset.value;
-	const productId = productElement.children[2].dataset.value;
-	const subcategoryId = productElement.children[3].dataset.value;
-	const description = productElement.children[4].dataset.value;
-	const cost = productElement.children[5].dataset.value;
+	//const image = productElement.children[0].getAttribute('data-value');
+	//const title = productElement.children[1].dataset.value;
+	//const productId = productElement.children[2].dataset.value;
+	//const subcategoryId = productElement.children[3].dataset.value;
+	//const description = productElement.children[4].dataset.value;
+	//const cost = productElement.children[5].dataset.value;
+
+	const image = productElement.querySelector("#product-image").getAttribute('data-value');
+	const title = productElement.querySelector("#product-title").dataset.value;
+	const productId = productElement.querySelector("#product-id").dataset.value;
+	const subcategoryId = productElement.querySelector("#product-subcategory").dataset.value;
+	const description = productElement.querySelector("#product-description").dataset.value;
+	const cost = productElement.querySelector("#product-cost").dataset.value;
 	
 	// Send a POST request to the '/CIS' route
 	fetch('http://127.0.0.1:8080/CIS', {

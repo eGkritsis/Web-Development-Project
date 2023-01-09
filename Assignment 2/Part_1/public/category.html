@@ -71,20 +71,28 @@
             <script id="product-template" type="text/x-handlebars-template">
                 {{#each products}}
                     <section class="product" data-subcategory_id="{{subcategory_id}}">
-                        <img data-value="{{image}}" src="{{image}}" alt="{{title}}">
-                        <h2 data-value="{{title}}">{{title}}</h2>
-                        <h4 data-value="{{id}}">Id: {{id}}</h4>
-                        <h5 data-value="{{subcategory_id}}">Subcategory: {{subcategory_id}}</h5>
-                        <p data-value="{{description}}">{{description}}</p>
-                        <h3 data-value="{{cost}}">Cost: {{cost}}€</h3>
-                        <!--
-                        <form method="post" id="buy-form">
-                            <input type="hidden" name="{{id}}" value="">
-                            <button type="submit">Buy now</button>
-                        </form>
-                        -->
                         
-                        <button type="submit" id="buy-btn" onclick="CIS(event, this.parentNode)">Buy now</button>
+                        <article class="jstf-center">
+                            <img data-value="{{image}}" id="product-image" src="{{image}}" alt="{{title}}">
+                        </article>
+                                                
+                        <article>
+                            <h2 data-value="{{title}}" id="product-title">{{title}}</h2>
+                            <h4 data-value="{{id}}" id="product-id">Id: {{id}}</h4>
+                            <h5 data-value="{{subcategory_id}}" id="product-subcategory">Subcategory: {{subcategory_id}}</h5>
+                            <p data-value="{{description}}" id="product-description">{{description}}</p>
+                            <h3 data-value="{{cost}}" id="product-cost">Cost: {{cost}}€</h3>
+                        </article>
+                            <!--
+                            <form method="post" id="buy-form">
+                                <input type="hidden" name="{{id}}" value="">
+                                <button type="submit">Buy now</button>
+                            </form>
+                            -->
+                        <article class="jstf-center">
+                            <button type="submit" id="buy-btn" onclick="CIS(event, this.parentNode.parentNode)">Buy now</button>
+                        </article>
+                        
                         
                     </section>
                 {{/each}}
