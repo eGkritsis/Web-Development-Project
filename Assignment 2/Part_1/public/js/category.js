@@ -29,7 +29,7 @@ function fetchProducts() {
 
 function fetchSubcategories() {
     let params = new URLSearchParams(window.location.search);
-	  let categoryId = params.get('categoryId');
+	let categoryId = params.get('categoryId');
     let base_url = 'http://127.0.0.1:5000/https://wiki-shop.onrender.com/categories/';
     let url = base_url + categoryId + '/subcategories/';
 
@@ -139,100 +139,13 @@ function LS(event) {
 	});
 }
 
-
-//var source = document.querySelector("#product-template").innerHTML;
-//var template = Handlebars.compile(source);
-//document.body.innerHTML = template();
-
-/*
-var cisForm = document.querySelector("#buy-form");
-console.log(cisForm); // Null because the form is being dynamically generated with Handlebars
-console.log("CISFORM!!!");
-
-
-const cisForm = document.getElementById("buy-form");
-console.log(cisForm); // Null because the form is being dynamically generated with Handlebars
-console.log("CISFORM!!!");
-cisForm.addEventListener('submit', CIS);
-*/ 
-
-
-/*
-// Mutation Observer code 
-
-// Select 'product-template' to observe for mutations
-const container = document.getElementById('product-template');
-
-// Create MutationObserver instance 
-const observer = new MutationObserver(mutationHandler);
-
-// Configure the observer
-const config = { 
-	childlist: true,
-	attributes: true,
-	subtree: true,
-	characterData: true
-};
-
-// Start observing the container
-observer.observe(container, config);
-
-// Callback function
-function mutationHandler(mutations) {
-	console.log("Inside mutationHandler");
-	// Check if the form element has been added to the container
-	const cisButton = container.querySelector('#buy-btn');
-	console.log(cisButton);
-	if (cisButton) {
-		// Attach the event listener to the form element
-		cisButton.addEventListener('submit', CIS)
-	} 
-}
-*/
-
-/*
-const targetNode = document.body;
-
-const config = {
-	childlist: true,
-	attributes: true,
-	subtree: true,
-	characterData: true
-};
-
-const mutationHandler = function(mutationsList) {
-  for (let mutation of mutationsList) {
-    if (mutation.type === 'childList') {
-      const forms = mutation.target.getElementsByTagName('form');
-      for (let form of forms) {
-        if (form.id === 'buy-form') {
-          form.addEventListener('submit', CIS);
-        }
-      }
-    }
-  }
-};
-
-const observer = new MutationObserver(mutationHandler);
-
-observer.observe(targetNode, config);
-*/
-
-
 // Cart Item Service - CIS
 function CIS(event, productElement) {
 	console.log("Inside CIS");
 	// Prevent the default form submission behavior
 	event.preventDefault();
 
-	// Retrieve product's information 
-	//const image = productElement.children[0].getAttribute('data-value');
-	//const title = productElement.children[1].dataset.value;
-	//const productId = productElement.children[2].dataset.value;
-	//const subcategoryId = productElement.children[3].dataset.value;
-	//const description = productElement.children[4].dataset.value;
-	//const cost = productElement.children[5].dataset.value;
-
+	// Retrieve product's information
 	const image = productElement.querySelector("#product-image").getAttribute('data-value');
 	const title = productElement.querySelector("#product-title").dataset.value;
 	const productId = productElement.querySelector("#product-id").dataset.value;
@@ -284,7 +197,16 @@ function CIS(event, productElement) {
 
 		// Display a failed login message
 		const messageSection = document.getElementById('cart-msg');
-		messageSection.innerHTML = 'Failed to add product to your Cart';
+
+		if (sessionId === null){
+			//This means the purchase failed because the user has not logged-in yet.
+			messageSection.innerHTML = 'You must log-in first';
+		}else{
+			//This means that some other error has occurred, so we display a more
+			//generic message. 
+			messageSection.innerHTML = 'Failed to add product to your Cart';
+		}
+		
 		messageSection.style.visibility = ("visible");
 		messageSection.style.opacity = ("1");
 		messageSection.classList.add('error');
@@ -323,7 +245,7 @@ function CSS() {
 		}
 	})
 	.then(data => {
-		// If everything went fine, update the cart size.
+		// If everything went OK, update the cart size.
 		const cartSize = document.getElementById("cart-count");
 		cartSize.innerHTML = data.size;
 	})
@@ -332,6 +254,12 @@ function CSS() {
 	});
 }
 
+
+// Triggered upon clicking the cart icon
+function retrieveCart() {
+	// Add user & session info to the url & redirect to cart
+	window.location.href = '/cart.html?username=' + globalUsername + '&sessionId=' + sessionId ;
+}
 
 fetchSubcategories();
 fetchProducts();

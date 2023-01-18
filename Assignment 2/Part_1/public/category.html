@@ -28,7 +28,7 @@
                 <section id="cart-count-container">
                     <p id="cart-count">0</p>
                 </section>
-                <p id="cart-icon"><i class="fa-solid fa-cart-shopping"></i></p>
+                <button id="cart-icon" onclick="retrieveCart()"><i class="fa-solid fa-cart-shopping" ></i></button>
                 <section>
                     <p id="cart-msg"></p>
                 </section>
@@ -98,9 +98,8 @@
                                 <button type="submit">Buy now</button>
                             </form>
                             -->
-                        <article class="jstf-center">
-                            <button type="submit" id="buy-btn" onclick="CIS(event, this.parentNode.parentNode)">Buy now</button>
-                        </article>
+                        
+                        <button type="submit" id="buy-btn" onclick="CIS(event, this.parentNode)">Add to Cart</button>
                         
                         
                     </section>

@@ -76,7 +76,7 @@ footer {
     margin-top: 30px ;
     margin-bottom: 30px;
     padding: 10px 10px;
-    width: 25em;
+    width: 20em;
     background-color: white;
     border-radius: 25px;
     border: 2px solid lightgray;
@@ -119,15 +119,20 @@ footer {
     /* Create a box area for every product and paint it white */
     margin-top: 30px;
     padding: 10px 10px;
-    width: 25em;
+    width: 22em;
     background-color: white;
     border-radius: 25px;
     border: 2px solid lightgray;
     color: black;
 
-    display: grid;
-    grid-template-rows: 1fr 1.5fr 3em;
+    display: flex;
+    flex-direction: column;
 }    
+
+#buy-btn {
+    align-self: center;
+    margin-top: auto;
+}
 
 .product img {
     padding: 10px;
@@ -174,7 +179,7 @@ footer {
     font-size: 1.1em;
     width: 10em;
     position: relative;
-    bottom: 0;
+    margin-top: auto;
 }
 
 /*Filters section*/
@@ -185,6 +190,8 @@ footer {
     align-items: center;
     padding: 2em;
     width: 17em;
+    margin-left: auto;
+    margin-right: auto;
     background-color: rgb(241, 241, 241);
     border: black solid 2px;
     border-radius: 2.5em;
@@ -260,6 +267,12 @@ footer {
 
 #cart-icon {
     font-size: 5em;
+    border: 0;
+    background: none;
+}
+
+#cart-icon :hover{
+    cursor: pointer;
 }
 
 #cart-count-container {
@@ -273,6 +286,144 @@ footer {
     justify-content: center;
 }
 
+/* Code for the Cart page*/
+
+#cart-summary-container {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    width: 32em;
+    background-color: rgb(241, 241, 241);
+    border: black solid 2px;
+    border-radius: 2.5em;
+}
+
+#cart-summary-container > *{
+ margin-bottom: 2em;
+}
+
+#cart-products-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+#cart-products-container > article{
+    display: grid;
+    grid-template-columns: 7fr 1.5fr 1fr;
+    font-weight: bold;
+}
+
+#products-list article{
+    display: grid;
+    grid-template-columns: 7fr 1.5fr 1fr;
+    margin-top: 2em;
+}
+
+
+#cart-price-container {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+    
+#cart-price-text {
+    font-weight: bold;
+}
+
+#cart-summary-container button{
+    margin-top: 1;
+    background-color: black;
+    padding: 0.8em 1.2em;
+    color: #f3f3f3;
+    cursor: pointer;
+    border-radius: 1.3em;
+    font-size: 1.1em;
+    width: 13em;
+}
+
+
+/* Colors for link interactions.*/
+a:link {
+    color: #f44336;
+    text-decoration: none;
+}
+
+a:visited {
+    color: gray;
+    text-decoration: none;
+}
+
+a:hover {
+    color: purple;
+    text-decoration: none;
+}
+
+a:active {
+    color: black;
+    text-decoration: none;
+}
+
+/*MEDIA QUERIES*/
+@media screen and (max-width: 1100px) {
+    
+    #categories {
+        /*Switch to a 1-column grid layout*/
+        grid-template-columns: auto auto;
+    }
+    
+    .category {
+        width: 14em;
+    }
+
+    #products {
+        /*Switch to a 1-column grid layout*/
+        grid-template-columns: auto auto;
+    }
+
+    #product {
+        width: 14em;
+    }
+
+    #login-form {
+        width: 12em;
+    }
+
+    #cart-icon {
+        font-size: 4em;
+    }
+
+    .cart-container {
+        right: 5px;
+    }
+
+    #cart-summary-container {
+        width: 22em;
+    }
+
+    #products-list > article{
+        grid-template-columns: 6fr 2fr 1fr;
+    }
+
+
+}
+
+
+@media screen and (max-width: 800px) {
+    #categories {
+        /*Switch to a 1-column grid layout*/
+        grid-template-columns: auto;
+
+    }
+
+    #products {
+        /*Switch to a 1-column grid layout*/
+        grid-template-columns: auto;
+    }
+}
 
 
 /*Individual product listings*/
@@ -297,23 +448,3 @@ footer {
 
   
 
-/* Colors for link interactions.*/
-a:link {
-    color: #f44336;
-    text-decoration: none;
-}
-
-a:visited {
-    color: gray;
-    text-decoration: none;
-}
-
-a:hover {
-    color: purple;
-    text-decoration: none;
-}
-
-a:active {
-    color: black;
-    text-decoration: none;
-}

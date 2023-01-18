@@ -144,3 +144,71 @@ app.post('/CSS', (req, res) => {
 		return res.status(200).json(cartSize);
 	}
 })
+
+// Route: /CRS
+app.post('/CRS', (req, res) => {
+	console.log("Received Cart Retrieval Service request");
+	if (active.noOneIsActive()) {
+		return res.status(401).json({ error: "401 Unauthorized, Not logged in"});
+	} else {
+		const username = req.body.globalUsername; 
+		const sessionId = req.body.sessionId; 
+
+		console.log(username)
+		console.log(sessionId)
+		if (!active.isActive(username, sessionId)) {
+			return res.status(401).json({ error: "401 Unauthorized, username does not match sessionId"});
+		} 
+
+		// Check if the user already has a cart in the Active object
+		let cart = active.getCart();
+		let products = cart.getProducts();
+		console.log(products);
+
+		// Get all the unique product ids from the cart. 
+		//let ids = Set();
+		//for (const product of  products){
+		//	ids.add(product.getID());
+		//}
+		
+
+		// Get all the unique product ids from the cart. 
+		let ids = new Set();
+		for (const product of products){
+			ids.add(product.getId());
+			console.log(product.getId());
+		}
+		
+		// Array of (title, cost, quantity) pairs
+		let cartItems = [];
+
+		let totalCost = 0;
+
+		// For each id, get the count of items in the cart
+		for (const id of ids.values()){
+			console.log(id);
+			let quantity = 0;
+			let cost = 0;
+			let title = null;
+
+			for (const product of products){
+				if (product.getId() == id){
+					quantity += 1;
+					cost = product.getCost();
+					title = product.getTitle();
+				}
+			}
+
+			// Add to the total price
+			totalCost += cost * quantity;
+			// Add to the grouped products
+			cartItems.push({"title": title, "cost": cost, "quantity": quantity});
+		}
+
+		// Create the Cart Retrieval Service response.
+		let crs_response = {"cartItems": cartItems, "totalCost": totalCost}
+		console.log(crs_response);
+		
+		return res.status(200).json(crs_response);
+	}
+})
