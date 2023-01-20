@@ -13,7 +13,7 @@ app.listen(port)
 /* 
     Serve static content from directory "public",
     it will be accessible under path /, 
-    e.g. http://localhost:8080/index.html
+    e.g. http://127.0.0.1:8080/index.html
 */
 
 app.use(express.static('public'))
@@ -36,7 +36,6 @@ app.get('/', function(req, res){
     })
 })
 
-// * NA DHMIOURGHTHE LSITA ME CARTS GIA NA KRATIOUNTAI OSO O SERVER DEN EXEI KANEI RESTART (REFRESHED SELIDA) *
 
 // Upon starting the application, a series of users with specific usernames and passwords will be automatically created 
 const users = [];
@@ -165,12 +164,6 @@ app.post('/CRS', (req, res) => {
 		let products = cart.getProducts();
 		console.log(products);
 
-		// Get all the unique product ids from the cart. 
-		//let ids = Set();
-		//for (const product of  products){
-		//	ids.add(product.getID());
-		//}
-		
 
 		// Get all the unique product ids from the cart. 
 		let ids = new Set();
